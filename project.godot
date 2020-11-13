@@ -8,14 +8,38 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "PathFollow2D",
+"class": "BaseEnemy",
+"language": "GDScript",
+"path": "res://Enemies/BaseEnemy.gd"
+}, {
+"base": "StaticBody2D",
+"class": "BaseTower",
+"language": "GDScript",
+"path": "res://Towers/BaseTower.gd"
+}, {
+"base": "Path2D",
+"class": "EnemyPath",
+"language": "GDScript",
+"path": "res://World/EnemyPath.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://World/Level.gd"
+} ]
 _global_script_class_icons={
-
+"BaseEnemy": "",
+"BaseTower": "",
+"EnemyPath": "",
+"Level": ""
 }
 
 [application]
 
 config/name="TowerCard"
+run/main_scene="res://World/World.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -49,6 +73,10 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[layer_names]
+
+2d_physics/layer_1="Towers"
 
 [rendering]
 

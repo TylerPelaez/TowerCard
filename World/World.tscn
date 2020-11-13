@@ -1,3 +1,23 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://World/EnemyPath.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/Level.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 16, 48, 0, 0, 0, 0, 72, 48, 0, 0, 0, 0, 72, 88, 0, 0, 0, 0, 144, 88, 0, 0, 0, 0, 272, 88, 0, 0, 0, 0, 272, 144, 0, 0, 0, 0, 120, 144, 0, 0, 0, 0, 120, 200 )
+}
 
 [node name="World" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="EnemyPath" parent="." instance=ExtResource( 1 )]
+curve = SubResource( 1 )
+
+[node name="PlacementArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlacementArea"]
+polygon = PoolVector2Array( 0, 0, 8, 0, 8, 56, 64, 56, 64, 96, 264, 96, 264, 136, 112, 136, 112, 208, 128, 208, 128, 152, 280, 152, 280, 80, 80, 80, 80, 40, 24, 40, 24, 0, 320, 0, 320, 224, 0, 224 )
+[connection signal="input_event" from="PlacementArea" to="." method="_on_PlacementArea_input_event"]
+
+[editable path="EnemyPath"]
