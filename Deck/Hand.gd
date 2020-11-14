@@ -23,6 +23,9 @@ func add_card(cardData: Card) -> bool:
 
 # This calls queue free on the ui card, don't use the passed in card after calling this function
 func discard_card(card: UICard) -> bool:
+	# If the card isn't a trash card, add it to the discard pile
+	if (card.card_data.trashes == false):
+		Deck.discardCard(card.card_data.duplicate())
 	for child in get_children():
 		if child == card:
 			remove_child(card)

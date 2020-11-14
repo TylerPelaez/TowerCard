@@ -50,6 +50,6 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HandButton" to="CardsInDeck" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="HandButton" to="CardsInDeck" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="HandButton" to="Hand" method="_on_HandButton_pressed"]

@@ -16,7 +16,8 @@ func drawCard():
 	# Return discards if no cards left in draw pile
 	if drawPile.size() < 1:
 		returnDiscards()
-	return drawPile.pop_front()
+	var drawnCard = drawPile.pop_front()
+	return drawnCard
 	
 # Puts the card passed in as an argument on top of the discard pile
 func discardCard(card):
