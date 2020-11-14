@@ -31,40 +31,6 @@ func _physics_process(delta: float) -> void:
 			held_tower.set_cant_place_color()
 		else:
 			held_tower.set_can_place_color()
-	
-#	match ui_state:
-#		STATE.DEFAULT:
-#			return
-#		STATE.PLACING_TOWER:
-#			if held_tower == null:
-#				print("ERROR: state is PLACING_TOWER, but held_tower is null")
-#				return
-#
-#			if Input.is_action_just_pressed("cancel_tower_placement"):
-#				cancel_card_play()
-#				return
-#
-#			held_tower.global_position = held_tower.get_global_mouse_position()
-#
-#			if !can_place_held_tower():
-#				held_tower.set_cant_place_color()
-#				return
-#
-#			if Input.is_action_just_pressed("place_tower"):
-#				_place_tower()
-#			else:
-#				held_tower.set_can_place_color()
-#		STATE.CASTING:
-#			if selected_spell == null:
-#				print("ERROR: state is CASTING, but selected_spell is null")
-#				return
-#
-#			if Input.is_action_just_pressed("cancel_tower_placement"):
-#				cancel_card_play()
-#				return
-#
-#			if Input.is_action_just_pressed("place_tower"):
-#				_cast_spell()
 
 func _unhandled_input(event):
 	if ui_state == STATE.DEFAULT:
