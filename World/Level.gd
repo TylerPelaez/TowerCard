@@ -51,7 +51,7 @@ func _on_EnemySpawnController_wave_finished_enemy_death():
 func set_core_health(value: float):
 	core_health = clamp(value, 0, core_max_health)
 	if core_health <= 0:
-		get_tree().quit()
+		get_tree().change_scene("res://World/GameOver.tscn")
 
 
 func _on_EnemySpawnController_spawner_enemy_attacked_core(damage):
