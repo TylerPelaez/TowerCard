@@ -3,6 +3,9 @@ class_name UICard
 
 onready var image = $ImageRect
 
+signal show_tooltip(tooltip_text)
+signal hide_tooltip
+
 var card_data
 
 # Called when the node enters the scene tree for the first time.
@@ -14,3 +17,11 @@ func _ready():
 func initialize(cardData: Card) -> void:
 	card_data = cardData
 	image.texture = load(card_data.image)
+
+
+func _on_UICard_mouse_entered():
+	emit_signal("show_tooltip", card_data.text)
+
+
+func _on_UICard_mouse_exited():
+	emit_signal("hide_tooltip")

@@ -3,7 +3,8 @@
 [ext_resource path="res://Cards/UICard.gd" type="Script" id=2]
 
 [node name="UICard" type="MarginContainer"]
-margin_right = 64.0
+margin_left = -1.0
+margin_right = 63.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 script = ExtResource( 2 )
@@ -20,3 +21,5 @@ color = Color( 0.219608, 0.152941, 0.152941, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 expand = true
+[connection signal="mouse_entered" from="." to="." method="_on_UICard_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_UICard_mouse_exited"]
