@@ -2,6 +2,7 @@ extends Node
 
 signal wave_finished_spawning
 signal wave_finished_enemy_death
+signal spawner_enemy_attacked_core(damage)
 
 const enemyConfigNamesToScenes = {"basic": preload("res://Enemies/BasicEnemy.tscn") }
 
@@ -47,6 +48,7 @@ func _spawnEnemy(resource: Resource) -> void:
 	enemy_spawn_target.add_child(instance)
 	instance.global_position = enemy_spawn_target.global_position
 	instance.connect("enemy_death", self, "_onEnemy_death")
+	instance.connect("enemy_attacked_core", self, "_onEnemy_attacked_core")
 
 func _on_SpawnTimer_timeout():
 	var currentEnemyConfigName = current_wave_configuration[0].keys()[0]
@@ -64,3 +66,7 @@ func _onEnemy_death():
 	current_wave_enemy_death_count += 1
 	if current_wave_enemy_death_count == current_wave_total_enemy_count:
 		emit_signal("wave_finished_enemy_death")
+
+func _onEnemy_attacked_core(damage: float):
+	print("here")
+	emit_signal("spawner_enemy_attacked_core", damage)

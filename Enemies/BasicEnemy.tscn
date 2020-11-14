@@ -41,6 +41,7 @@ tracks/0/keys = {
 }
 
 [node name="BaseEnemy" instance=ExtResource( 1 )]
+speed = 30.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -52,10 +53,32 @@ autoplay = "Walk"
 anims/Die = SubResource( 1 )
 anims/Walk = SubResource( 2 )
 
+[node name="TowerDetectionArea" parent="." index="2"]
+visible = false
+
 [node name="CollisionShape2D" parent="TowerDetectionArea" index="0"]
+visible = false
 shape = ExtResource( 3 )
+
+[node name="Hurtbox" parent="." index="3"]
+visible = false
 
 [node name="Collider" parent="Hurtbox" index="0"]
 shape = ExtResource( 3 )
+
+[node name="Control" parent="." index="4"]
+margin_left = -9.0
+margin_top = -18.0
+margin_right = 9.0
+margin_bottom = -15.0
+
+[node name="MaxHealthBar" parent="Control" index="0"]
+margin_right = 18.0
+margin_bottom = 3.0
+grow_horizontal = 2
+
+[node name="HealthBar" parent="Control" index="1"]
+margin_right = 18.0
+margin_bottom = 3.0
 
 [editable path="Hurtbox"]

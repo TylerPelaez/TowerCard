@@ -7,6 +7,9 @@ onready var playerController = $PlayerController
 onready var placementArea = $PlacementArea
 onready var enemySpawnController = $EnemySpawnController
 
+export var core_max_health: float = 20.0
+onready var core_health := core_max_health setget set_core_health
+
 var enemies_done_spawning = false
 var all_enemies_killed = false
 var current_wave: int = 0
@@ -41,3 +44,12 @@ func _on_EnemySpawnController_wave_finished_spawning():
 
 func _on_EnemySpawnController_wave_finished_enemy_death():
 	all_enemies_killed = true
+
+func set_core_health(value: float):
+	core_health = clamp(value, 0, core_max_health)
+	if core_health <= 0:
+		get_tree().quit()
+
+
+func _on_EnemySpawnController_spawner_enemy_attacked_core(damage):
+	self.core_health -= damage

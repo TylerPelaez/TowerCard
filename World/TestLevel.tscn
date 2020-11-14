@@ -7,7 +7,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 24, 48, 0, 0, 0, 0, 72, 48, 0, 0, 0, 0, 72, 88, 0, 0, 0, 0, 144, 88, 0, 0, 0, 0, 560, 88, 0, 0, 0, 0, 560, 200, 0, 0, 0, 0, 120, 200, 0, 0, 0, 0, 120, 376 )
+"points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 24, 48, 0, 0, 0, 0, 72, 48, 0, 0, 0, 0, 72, 88, 0, 0, 0, 0, 144, 88, 0, 0, 0, 0, 560, 88, 0, 0, 0, 0, 560, 200, 0, 0, 0, 0, 120, 200, 0, 0, 0, 0, 120, 420 )
 }
 
 [node name="TestLevel" type="Node2D"]
@@ -26,6 +26,7 @@ polygon = PoolVector2Array( 0, 0, 8, 0, 8, 64, 56, 64, 56, 104, 544, 104, 544, 1
 [node name="PlayerController" parent="." instance=ExtResource( 3 )]
 
 [node name="EnemySpawnController" parent="." instance=ExtResource( 4 )]
+[connection signal="spawner_enemy_attacked_core" from="EnemySpawnController" to="." method="_on_EnemySpawnController_spawner_enemy_attacked_core"]
 [connection signal="wave_finished_enemy_death" from="EnemySpawnController" to="." method="_on_EnemySpawnController_wave_finished_enemy_death"]
 [connection signal="wave_finished_spawning" from="EnemySpawnController" to="." method="_on_EnemySpawnController_wave_finished_spawning"]
 
