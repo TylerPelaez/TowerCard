@@ -26,5 +26,8 @@ polygon = PoolVector2Array( 0, 0, 8, 0, 8, 64, 56, 64, 56, 104, 544, 104, 544, 1
 [node name="PlayerController" parent="." instance=ExtResource( 3 )]
 
 [node name="EnemySpawnController" parent="." instance=ExtResource( 4 )]
+[connection signal="spawner_enemy_attacked_core" from="EnemySpawnController" to="." method="_on_EnemySpawnController_spawner_enemy_attacked_core"]
+[connection signal="wave_finished_enemy_death" from="EnemySpawnController" to="." method="_on_EnemySpawnController_wave_finished_enemy_death"]
+[connection signal="wave_finished_spawning" from="EnemySpawnController" to="." method="_on_EnemySpawnController_wave_finished_spawning"]
 
 [editable path="EnemyPath"]
