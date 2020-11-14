@@ -1,5 +1,5 @@
-extends "res://Cards/Card.gd"
+extends Card
 
 
 func _init():
-	cardType = SPELL
+	card_type = CARD_TYPE.SPELL

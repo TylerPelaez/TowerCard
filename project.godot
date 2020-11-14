@@ -24,22 +24,40 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Towers/BaseTower.gd"
 }, {
+"base": "Node",
+"class": "Card",
+"language": "GDScript",
+"path": "res://Cards/Card.gd"
+}, {
 "base": "Path2D",
 "class": "EnemyPath",
 "language": "GDScript",
 "path": "res://World/EnemyPath.gd"
 }, {
+"base": "HBoxContainer",
+"class": "Hand",
+"language": "GDScript",
+"path": "res://Deck/Hand.gd"
+}, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
 "path": "res://World/Level.gd"
+}, {
+"base": "MarginContainer",
+"class": "UICard",
+"language": "GDScript",
+"path": "res://Cards/UICard.gd"
 } ]
 _global_script_class_icons={
 "BaseEnemy": "",
 "BaseProjectile": "",
 "BaseTower": "",
+"Card": "",
 "EnemyPath": "",
-"Level": ""
+"Hand": "",
+"Level": "",
+"UICard": ""
 }
 
 [application]
@@ -51,6 +69,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Utils="*res://Utils.gd"
+CardsDatabase="*res://Cards/CardsDatabase.gd"
 
 [display]
 

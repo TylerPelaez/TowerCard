@@ -1,23 +1,16 @@
 extends MarginContainer
+class_name UICard
 
+onready var image = $ImageRect
 
-# Declare member variables here. Examples:
-onready var CardDatabase = preload("res://Cards/CardsDatabase.gd")
-var cardName = "Bunker"
-onready var cardInfo = CardDatabase.DATA[CardDatabase.get(cardName)]
-onready var cardImagePath = cardInfo[2]
+var card_data
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var cardSize = rect_size
-	# Scale card back to current card scene size
-	$CardBack.scale *= cardSize/$CardBack.texture.get_size()
-	# Scale image on card to current size of margin container
-	$Image.texture = load(cardImagePath)
-	$Image.position = Vector2(cardSize.x/2, cardSize.y/3)
-	$Image.scale *= cardSize/$Image.texture.get_size()/2
+	# For debugging
+	if Utils.is_main_scene(self):
+		initialize(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
 	
-	$CardLabel.text = cardInfo[0]
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func initialize(cardData: Card) -> void:
+	card_data = cardData
+	image.texture = load(card_data.image)

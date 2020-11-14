@@ -1,4 +1,4 @@
-extends "res://Cards/Card.gd"
+extends Card
 
 func _init():
-	cardType = TOWER
+	card_type = CARD_TYPE.TOWER

@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	if fireBulletTimer.time_left <= 0:
 		var target = find_target()
 		if target != null:
-			_fire(target.global_position)
+			_fire(target)
 	
 	# Force _draw() to be called
 	update()
@@ -73,9 +73,9 @@ func find_target():
 	
 	return target
 
-func _fire(targetPosition: Vector2) -> void:
-	var projectile = Utils.instance_scene_on_main(Projectile, global_position)
-	projectile.velocity = (targetPosition - global_position) * projectile_speed
+func _fire(target: BaseEnemy) -> void:
+	var projectile: BaseProjectile = Utils.instance_scene_on_main(Projectile, global_position)
+	projectile.velocity = (target.global_position - global_position) * projectile_speed
 	projectile.rotation = projectile.velocity.angle()
 	projectile.set_damage(damage)
 	fireBulletTimer.start()
