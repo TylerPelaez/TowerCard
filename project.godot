@@ -106,6 +106,8 @@ cancel_tower_placement={
 
 2d_physics/layer_1="Towers"
 2d_physics/layer_2="PlacementArea"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="EnemyHurtboxes"
 
 [rendering]
 
