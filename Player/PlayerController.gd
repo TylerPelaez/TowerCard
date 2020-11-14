@@ -22,6 +22,12 @@ func _physics_process(delta: float) -> void:
 				print("ERROR: state is PLACING_TOWER, but held_tower is null")
 				return
 			
+			if Input.is_action_just_pressed("cancel_tower_placement"):
+				held_tower.queue_free()
+				held_tower = null
+				ui_state = STATE.DEFAULT
+				return
+			
 			held_tower.global_position = held_tower.get_global_mouse_position()
 			
 			if !can_place_held_tower():
