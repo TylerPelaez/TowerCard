@@ -8,9 +8,9 @@ export var hand_limit: int = 5
 
 func _ready() -> void:
 	visible = false
-	add_card(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
-	add_card(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
-	add_card(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
+	add_card(Deck.drawCard())
+	add_card(Deck.drawCard())
+	add_card(Deck.drawCard())
 
 func add_card(cardData: Card) -> bool:
 	if _is_at_hand_limit():
