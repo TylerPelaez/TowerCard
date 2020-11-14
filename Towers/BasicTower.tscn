@@ -11,5 +11,5 @@ extents = Vector2( 8, 8 )
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
 
-[node name="PlacementSize" parent="." index="1"]
+[node name="PlacementCollider" parent="." index="1"]
 shape = SubResource( 1 )
