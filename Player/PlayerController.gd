@@ -31,13 +31,13 @@ func _physics_process(delta: float) -> void:
 			held_tower.global_position = held_tower.get_global_mouse_position()
 			
 			if !can_place_held_tower():
-				held_tower.setCantPlaceColor()
+				held_tower.set_cant_place_color()
 				return
 			
 			if Input.is_action_just_pressed("place_tower"):
 				_place_tower()
 			else:
-				held_tower.setCanPlaceColor()
+				held_tower.set_can_place_color()
 
 func set_level_placement_area(area: Node) -> void:
 	level_placement_area = area

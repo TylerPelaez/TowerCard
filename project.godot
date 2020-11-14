@@ -42,6 +42,10 @@ config/name="TowerCard"
 run/main_scene="res://World/TestLevel.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Utils="*res://Utils.gd"
+
 [display]
 
 window/size/width=320
@@ -96,6 +100,7 @@ cancel_tower_placement={
 
 2d_physics/layer_1="Towers"
 2d_physics/layer_2="PlacementArea"
+2d_physics/layer_3="Enemies"
 
 [rendering]
 
