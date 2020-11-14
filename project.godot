@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemies/BaseEnemy.gd"
 }, {
+"base": "Node2D",
+"class": "BaseProjectile",
+"language": "GDScript",
+"path": "res://Towers/BaseProjectile.gd"
+}, {
 "base": "Area2D",
 "class": "BaseTower",
 "language": "GDScript",
@@ -31,6 +36,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseEnemy": "",
+"BaseProjectile": "",
 "BaseTower": "",
 "EnemyPath": "",
 "Level": ""
@@ -101,6 +107,7 @@ cancel_tower_placement={
 2d_physics/layer_1="Towers"
 2d_physics/layer_2="PlacementArea"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_4="EnemyHurtboxes"
 
 [rendering]
 

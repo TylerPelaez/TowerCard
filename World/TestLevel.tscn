@@ -24,4 +24,10 @@ polygon = PoolVector2Array( 0, 0, 8, 0, 8, 64, 56, 64, 56, 104, 256, 104, 256, 1
 
 [node name="PlayerController" parent="." instance=ExtResource( 3 )]
 
+[node name="EnemySpawnerTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+[connection signal="timeout" from="EnemySpawnerTimer" to="." method="_on_EnemySpawnerTimer_timeout"]
+
 [editable path="EnemyPath"]

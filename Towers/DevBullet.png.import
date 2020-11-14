@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DevEnemy.png-fe00dfba85b9bb17201818da051ba1a4.stex"
+path="res://.import/DevBullet.png-47bd469436119fbab85687e402676c84.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/DevEnemy.png"
-dest_files=[ "res://.import/DevEnemy.png-fe00dfba85b9bb17201818da051ba1a4.stex" ]
+source_file="res://Towers/DevBullet.png"
+dest_files=[ "res://.import/DevBullet.png-47bd469436119fbab85687e402676c84.stex" ]
 
 [params]
 
