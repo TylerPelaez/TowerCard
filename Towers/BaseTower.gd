@@ -10,7 +10,7 @@ export var cooldown: float
 
 onready var sprite: Sprite = $Sprite
 onready var attackRange: Area2D = $AttackRange
-onready var attackRangeCollider: CollisionShape2D = $AttackRange/CollisionShape
+onready var attackRangeCollider: CollisionShape2D = $AttackRange/CollisionShape2D
 onready var fireBulletTimer: Timer = $FireBulletTimer
 
 var active: bool = false
@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	
 	if fireBulletTimer.time_left <= 0:
 		var target = find_target()
-	 	if target != null:
+		if target != null:
 			fire(target)
 	
 	# Force _draw() to be called
@@ -51,6 +51,7 @@ func build_tower() -> void:
 	draw_range = false
 	attackRangeCollider.disabled = false
 	set_range_collider_size()
+	fireBulletTimer.time_left = 0
 
 # This returns a BaseEnemy, or null if none found
 # TODO: make this not be so terribly inefficient.
@@ -68,7 +69,7 @@ func find_target():
 	return target
 
 func fire(target: BaseEnemy) -> void:
-	
+	print("Bang!")
 
 func set_cant_place_color() -> void:
 	sprite.modulate = RED_TRANSPARENT_COLOR
