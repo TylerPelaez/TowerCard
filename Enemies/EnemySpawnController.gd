@@ -4,7 +4,7 @@ signal wave_finished_spawning
 signal wave_finished_enemy_death
 signal spawner_enemy_attacked_core(damage)
 
-const enemyConfigNamesToScenes = {"basic": preload("res://Enemies/BasicEnemy.tscn") }
+const enemyConfigsToScenes = { LevelWaveConfigs.Basic: preload("res://Enemies/BasicEnemy.tscn") }
 
 
 onready var spawnTimer = $SpawnTimer
@@ -19,17 +19,10 @@ var current_wave_enemy_death_count := 0
 func _ready():
 	pass
 
-func initialize(enemySpawnTarget: Node, levelName: String) -> void:
+func initialize(enemySpawnTarget: Node, levelConfig: int) -> void:
 	enemy_spawn_target = enemySpawnTarget
-	var file = File.new()
-	file.open("res://World/" + levelName + "Config.json", file.READ)
-	var text = file.get_as_text()
-	var p = JSON.parse(text)
-	if typeof(p.result) == TYPE_ARRAY:
-		spawn_configuration = p.result
-	else:
-		print("ERROR. Could not load enemy spawn data")
-		
+	spawn_configuration = LevelWaveConfigs.DATA[levelConfig]
+	
 func get_wave_count() -> int:
 	return spawn_configuration.size()
 
@@ -52,7 +45,7 @@ func _spawnEnemy(resource: Resource) -> void:
 
 func _on_SpawnTimer_timeout():
 	var currentEnemyConfigName = current_wave_configuration[0].keys()[0]
-	var currentEnemyPackedScene = enemyConfigNamesToScenes[currentEnemyConfigName]
+	var currentEnemyPackedScene = enemyConfigsToScenes[currentEnemyConfigName]
 	_spawnEnemy(currentEnemyPackedScene)
 	current_wave_configuration[0][currentEnemyConfigName] -= 1
 	if current_wave_configuration[0][currentEnemyConfigName] <= 0:

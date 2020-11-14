@@ -1,14 +1,16 @@
-extends Node
+extends Node2D
 
 enum STATE {
 	DEFAULT,
-	PLACING_TOWER
+	PLACING_TOWER,
+	CASTING
 }
 
-const BasicTowerResource: Resource = preload("res://Towers/BasicTower.tscn")
+const BasicTowerResource: PackedScene = preload("res://Towers/BasicTower.tscn")
 
 var ui_state = STATE.DEFAULT
 var held_tower
+var selected_spell
 
 var level_placement_area
 
@@ -17,6 +19,8 @@ func _physics_process(delta: float) -> void:
 		STATE.DEFAULT:
 			if Input.is_action_just_pressed("dev_place_tower"):
 				_start_placing_tower(BasicTowerResource)
+			if Input.is_action_just_pressed("dev_cast_spell"):
+				_start_casting_spell(BasicTowerResource)
 		STATE.PLACING_TOWER:
 			if held_tower == null:
 				print("ERROR: state is PLACING_TOWER, but held_tower is null")
@@ -38,11 +42,14 @@ func _physics_process(delta: float) -> void:
 				_place_tower()
 			else:
 				held_tower.set_can_place_color()
+		STATE.CASTING:
+			if Input.is_action_just_pressed("place_tower"):
+				_cast_spell()
 
 func set_level_placement_area(area: Node) -> void:
 	level_placement_area = area
 
-func _start_placing_tower(tower: Resource) -> void:
+func _start_placing_tower(tower: PackedScene) -> void:
 	ui_state = STATE.PLACING_TOWER
 	var instance = tower.instance()
 	get_tree().current_scene.add_child(instance)
@@ -53,6 +60,14 @@ func _place_tower() -> void:
 	held_tower.build_tower()
 	held_tower = null
 	ui_state = STATE.DEFAULT
+
+func _start_casting_spell(spell: Resource) -> void:
+	ui_state = STATE.CASTING
+	
+
+func _cast_spell() -> void:
+	selected_spell.cast(get_global_mouse_position())
+	selected_spell = null
 
 func can_place_held_tower() -> bool:
 	if held_tower == null || level_placement_area == null:
