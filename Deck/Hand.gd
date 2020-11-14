@@ -49,5 +49,4 @@ func _on_ShowTooltip(tooltip_text):
 	emit_signal("show_tooltip", tooltip_text)
 	
 func _on_HideTooltip():
-	print("HIDING TOOLTIP")
 	emit_signal("hide_tooltip")
