@@ -4,7 +4,7 @@ signal wave_finished_spawning
 signal wave_finished_enemy_death
 signal spawner_enemy_attacked_core(damage)
 
-const enemyConfigsToScenes = { LevelWaveConfigs.Basic: preload("res://Enemies/BasicEnemy.tscn") }
+var enemyConfigsToScenes = { LevelWaveConfigs.Basic: preload("res://Enemies/BasicEnemy.tscn") }
 
 
 onready var spawnTimer = $SpawnTimer

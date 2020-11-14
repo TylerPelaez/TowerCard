@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Menu/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Towers/Bunker.png" type="Texture" id=2]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TowerCard" type="Label" parent="."]
+margin_left = 249.733
+margin_top = 165.894
+margin_right = 315.733
+margin_bottom = 179.894
+rect_scale = Vector2( 2, 2 )
+text = "TowerCard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 310.383, 129.921 )
+scale = Vector2( 2.33786, 2.17063 )
+texture = ExtResource( 2 )
+hframes = 13
+
+[node name="Start" type="Button" parent="."]
+margin_left = 290.166
+margin_top = 200.976
+margin_right = 331.166
+margin_bottom = 220.976
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
