@@ -8,6 +8,7 @@ radius = 0.01
 [node name="BaseTower" type="Area2D"]
 collision_mask = 3
 script = ExtResource( 1 )
+projectile_speed = 100.0
 
 [node name="AttackRange" type="Area2D" parent="."]
 collision_layer = 0
@@ -24,3 +25,5 @@ one_shot = true
 [node name="Sprite" type="Sprite" parent="."]
 
 [node name="PlacementCollider" type="CollisionShape2D" parent="."]
+
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]

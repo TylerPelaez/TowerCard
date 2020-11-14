@@ -16,6 +16,7 @@ onready var sprite: Sprite = $Sprite
 onready var attackRange: Area2D = $AttackRange
 onready var attackRangeCollider: CollisionShape2D = $AttackRange/CollisionShape2D
 onready var fireBulletTimer: Timer = $FireBulletTimer
+onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 var active: bool = false
 export var draw_range: bool = false
@@ -74,11 +75,17 @@ func find_target():
 	return target
 
 func _fire(target: BaseEnemy) -> void:
+	_play_attack_animation()
 	var projectile: BaseProjectile = Utils.instance_scene_on_main(Projectile, global_position)
 	projectile.velocity = (target.global_position - global_position).normalized() * projectile_speed
 	projectile.rotation = projectile.velocity.angle()
 	projectile.set_damage(damage)
+	projectile.z_index = z_index + 1
 	fireBulletTimer.start()
+
+# Virtual
+func _play_attack_animation() -> void:
+	pass
 
 func set_cant_place_color() -> void:
 	sprite.modulate = RED_TRANSPARENT_COLOR
