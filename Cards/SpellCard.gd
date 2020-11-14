@@ -1,5 +1,4 @@
 extends Card
+class_name SpellCard
 
-
-func _init():
-	card_type = CARD_TYPE.SPELL
+var spell

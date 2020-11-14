@@ -75,7 +75,7 @@ func find_target():
 
 func _fire(target: BaseEnemy) -> void:
 	var projectile: BaseProjectile = Utils.instance_scene_on_main(Projectile, global_position)
-	projectile.velocity = (target.global_position - global_position) * projectile_speed
+	projectile.velocity = (target.global_position - global_position).normalized() * projectile_speed
 	projectile.rotation = projectile.velocity.angle()
 	projectile.set_damage(damage)
 	fireBulletTimer.start()

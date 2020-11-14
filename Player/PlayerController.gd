@@ -20,7 +20,8 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("dev_place_tower"):
 				_start_placing_tower(BasicTowerResource)
 			if Input.is_action_just_pressed("dev_cast_spell"):
-				_start_casting_spell(BasicTowerResource)
+				var spellCard = CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Missile])
+				_start_casting_spell(spellCard)
 		STATE.PLACING_TOWER:
 			if held_tower == null:
 				print("ERROR: state is PLACING_TOWER, but held_tower is null")
@@ -43,6 +44,15 @@ func _physics_process(delta: float) -> void:
 			else:
 				held_tower.set_can_place_color()
 		STATE.CASTING:
+			if selected_spell == null:
+				print("ERROR: state is CASTING, but selected_spell is null")
+				return
+				
+			if Input.is_action_just_pressed("cancel_tower_placement"):
+				selected_spell = null
+				ui_state = STATE.DEFAULT
+				return
+			
 			if Input.is_action_just_pressed("place_tower"):
 				_cast_spell()
 
@@ -61,13 +71,14 @@ func _place_tower() -> void:
 	held_tower = null
 	ui_state = STATE.DEFAULT
 
-func _start_casting_spell(spell: Resource) -> void:
+func _start_casting_spell(spell: SpellCard) -> void:
 	ui_state = STATE.CASTING
-	
+	selected_spell = spell.spell
 
 func _cast_spell() -> void:
 	selected_spell.cast(get_global_mouse_position())
 	selected_spell = null
+	ui_state = STATE.DEFAULT
 
 func can_place_held_tower() -> bool:
 	if held_tower == null || level_placement_area == null:
