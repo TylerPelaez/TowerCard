@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 24, 48, 0, 0, 0, 0, 72, 48, 0, 0, 0, 0, 72, 88, 0, 0, 0, 0, 144, 88, 0, 0, 0, 0, 272, 88, 0, 0, 0, 0, 272, 144, 0, 0, 0, 0, 120, 144, 0, 0, 0, 0, 120, 200 )
+"points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 24, 48, 0, 0, 0, 0, 72, 48, 0, 0, 0, 0, 72, 88, 0, 0, 0, 0, 144, 88, 0, 0, 0, 0, 560, 88, 0, 0, 0, 0, 560, 200, 0, 0, 0, 0, 120, 200, 0, 0, 0, 0, 120, 376 )
 }
 
 [node name="TestLevel" type="Node2D"]
@@ -20,7 +20,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlacementArea"]
-polygon = PoolVector2Array( 0, 0, 8, 0, 8, 64, 56, 64, 56, 104, 256, 104, 256, 128, 104, 128, 104, 208, 136, 208, 136, 160, 288, 160, 288, 72, 88, 72, 88, 32, 40, 32, 40, 0, 320, 0, 320, 224, 0, 224 )
+polygon = PoolVector2Array( 0, 0, 8, 0, 8, 64, 56, 64, 56, 104, 544, 104, 544, 184, 104, 184, 104, 360, 136, 360, 136, 216, 576, 216, 576, 72, 88, 72, 88, 32, 40, 32, 40, 0, 640, 0, 640, 400, 0, 400 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 3 )]
 
