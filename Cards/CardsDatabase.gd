@@ -5,7 +5,7 @@ enum {Bunker, Missile}
 
 const DATA = {
 	Bunker:	
-		["Bunker", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/BunkerCard.png", "Basic Bunker", false],
+		["Bunker", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/BunkerCard.png", "Basic Bunker", false, preload("res://Towers/BasicTower.tscn")],
 	Missile:
 		["Missile", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/MissileCard.png", "Missile Strike", false, Missile]
 }
@@ -29,6 +29,7 @@ func create_card_from_data(cardData: Array) -> Card:
 			spell.initialize(entry[0], entry[1], entry[2], entry[3], entry[4])
 			card.spell = spell
 		Card.CARD_TYPE.TOWER:
-			card = Card.new()
+			card = TowerCard.new()
 			card.initialize(cardData[0], cardData[1], cardData[2], cardData[3], cardData[4])
+			card.tower = cardData[5]
 	return card

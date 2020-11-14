@@ -9,7 +9,9 @@ func _ready():
 	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
 	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
 	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
-
+	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Missile]))
+	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Missile]))
+		
 # Draw the top card of the deck
 # Puts it in the hand
 func drawCard():
