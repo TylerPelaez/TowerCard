@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Deck/Hand.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/CardsInDeck.gd" type="Script" id=2]
+[ext_resource path="res://UI/CardsInDiscard.gd" type="Script" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.840881
+margin_right = 0.840881
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hand" parent="." instance=ExtResource( 1 )]
+margin_left = 160.0
+margin_top = 295.59
+margin_right = 480.0
+margin_bottom = 359.59
+
+[node name="HandButton" type="Button" parent="."]
+margin_left = 587.754
+margin_top = 337.586
+margin_right = 637.754
+margin_bottom = 357.586
+text = "Hand"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardsInDeck" type="Label" parent="."]
+margin_left = 63.5
+margin_top = 296.0
+margin_right = 103.5
+margin_bottom = 310.0
+text = "Deck:"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardsInDiscard" type="Label" parent="."]
+margin_left = 63.5
+margin_top = 316.0
+margin_right = 115.5
+margin_bottom = 330.0
+text = "Discard:"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="HandButton" to="CardsInDeck" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="HandButton" to="Hand" method="_on_HandButton_pressed"]

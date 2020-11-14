@@ -7,10 +7,10 @@ const UICardScene: PackedScene = preload("res://Cards/UICard.tscn")
 export var hand_limit: int = 5
 
 func _ready() -> void:
-	if Utils.is_main_scene(self):
-		add_card(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
-		add_card(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
-		add_card(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
+	visible = false
+	add_card(Deck.drawCard())
+	add_card(Deck.drawCard())
+	add_card(Deck.drawCard())
 
 func add_card(cardData: Card) -> bool:
 	if _is_at_hand_limit():
@@ -23,6 +23,9 @@ func add_card(cardData: Card) -> bool:
 
 # This calls queue free on the ui card, don't use the passed in card after calling this function
 func discard_card(card: UICard) -> bool:
+	# If the card isn't a trash card, add it to the discard pile
+	if (card.card_data.trashes == false):
+		Deck.discardCard(card.card_data.duplicate())
 	for child in get_children():
 		if child == card:
 			remove_child(card)
@@ -32,3 +35,7 @@ func discard_card(card: UICard) -> bool:
 	
 func _is_at_hand_limit() -> bool:
 	return get_child_count() >= hand_limit
+
+# Toggles hand show/hide when button is pressed
+func _on_HandButton_pressed():
+	visible = !visible

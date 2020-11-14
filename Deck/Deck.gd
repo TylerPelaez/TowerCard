@@ -5,13 +5,19 @@ var discardPile = []
 var trashPile = []
 var hand = []
 
+func _ready():
+	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
+	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
+	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
+
 # Draw the top card of the deck
 # Puts it in the hand
 func drawCard():
 	# Return discards if no cards left in draw pile
-	if drawPile.length < 1:
+	if drawPile.size() < 1:
 		returnDiscards()
-	hand.push_back(drawPile.pop_front())
+	var drawnCard = drawPile.pop_front()
+	return drawnCard
 	
 # Puts the card passed in as an argument on top of the discard pile
 func discardCard(card):
