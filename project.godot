@@ -70,6 +70,7 @@ config/icon="res://icon.png"
 
 Utils="*res://Utils.gd"
 CardsDatabase="*res://Cards/CardsDatabase.gd"
+Deck="*res://Deck/Deck.gd"
 
 [display]
 
