@@ -7,6 +7,8 @@ onready var playerController = $PlayerController
 onready var placementArea = $PlacementArea
 onready var enemySpawnController = $EnemySpawnController
 
+export (LevelWaveConfigs.LevelConfig) var level_config = LevelWaveConfigs.LevelConfig.TestLevel
+
 export var core_max_health: float = 20.0
 onready var core_health := core_max_health setget set_core_health
 
@@ -18,7 +20,7 @@ var wave_active := false
 
 func _ready():
 	playerController.set_level_placement_area(placementArea)
-	enemySpawnController.initialize(enemyPath, name)
+	enemySpawnController.initialize(enemyPath, level_config)
 	total_waves = enemySpawnController.get_wave_count()
 
 func _process(delta: float) -> void:
