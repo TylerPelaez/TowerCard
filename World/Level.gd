@@ -6,6 +6,7 @@ onready var enemyPath = $EnemyPath
 onready var playerController = $PlayerController
 onready var placementArea = $PlacementArea
 onready var enemySpawnController = $EnemySpawnController
+onready var ui = $UI
 
 export (LevelWaveConfigs.LevelConfig) var level_config = LevelWaveConfigs.LevelConfig.TestLevel
 
@@ -23,6 +24,7 @@ func _ready():
 	playerController.set_level_placement_area(placementArea)
 	enemySpawnController.initialize(enemyPath, level_config)
 	total_waves = enemySpawnController.get_wave_count()
+	ui.set_player_controller(playerController)
 
 func _process(delta: float) -> void:
 	if all_enemies_killed && enemies_done_spawning:

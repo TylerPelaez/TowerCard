@@ -1,4 +1,4 @@
 extends Card
+class_name TowerCard
 
-func _init():
-	card_type = CARD_TYPE.TOWER
+var tower

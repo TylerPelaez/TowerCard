@@ -27,6 +27,7 @@ margin_left = 587.754
 margin_top = 337.586
 margin_right = 637.754
 margin_bottom = 357.586
+focus_mode = 0
 text = "Hand"
 __meta__ = {
 "_edit_use_anchors_": false
