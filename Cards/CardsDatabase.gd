@@ -13,7 +13,7 @@ const DATA = {
 	RepulsorTowerCard:
 		["Repulsor", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/RepulsorTowerCard.png", "Repulsor Tower\nR to rotate\nSlows foes", false, preload("res://Towers/RepulsorTower.tscn")],
 	EMPCard:
-		["EMP", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/EMPCard.png", "Electro-Magnetic Pulse", false, EMPCard]
+		["EMP", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/EMPCard.png", "Electro-Magnetic\nPulse\nStuns foes", false, EMPCard]
 }
 
 # Too lazy to move this to another class.
