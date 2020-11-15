@@ -79,6 +79,7 @@ func _on_begin_death():
 # Slow field entered
 func _on_Hurtbox_area_entered(area):
 	if area.get_parent() is SlowFieldPivot:
+		$SlowSound.play()
 		speed_multipliers.append(area.get_parent())
 
 #Slow field exited
