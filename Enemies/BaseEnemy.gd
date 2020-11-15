@@ -14,6 +14,11 @@ onready var maxHealthBar: ColorRect = $Control/MaxHealthBar
 onready var towerDetectionArea = $TowerDetectionArea
 onready var hurtbox = $Hurtbox
 
+onready var blood = load("res://Particles/BlackParticle.tscn")
+onready var gib = load("res://Particles/RedParticle.tscn")
+onready var boom = load("res://Particles/OrangeParticle.tscn")
+onready var spark = load("res://Particles/YellowParticle.tscn")
+
 var dying := false
 
 
@@ -29,6 +34,19 @@ func set_health(value: int) -> void:
 	
 	if health <= 0 && !dying:
 		dying = true
+		
+		var newGib = gib.instance()
+		add_child(newGib)
+		newGib.restart()
+		
+		var newSpark = spark.instance()
+		add_child(newSpark)
+		newSpark.restart()
+		
+		var newBoom = boom.instance()
+		add_child(newBoom)
+		newBoom.restart()
+		
 		emit_signal("enemy_death")
 		$AnimationPlayer.play("Die")
 		
@@ -36,6 +54,9 @@ func died():
 	queue_free()
 
 func _on_Hurtbox_hit(damage):
+	var newBleed = blood.instance()
+	add_child(newBleed)
+	newBleed.restart()
 	self.health -= damage
 
 func _on_VisibilityNotifier2D_screen_exited():
