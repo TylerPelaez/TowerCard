@@ -66,8 +66,11 @@ const DATA = {
 			{ Fast: 5 },
 			{ Basic: 10 }
 		]
-	]
+	],
+
+	LevelConfig.Level3: [
 		
+	]	
 }
 
 var CONFIGS_TO_SCENES = { 

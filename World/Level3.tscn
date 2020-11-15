@@ -36,6 +36,15 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlacementArea"]
+polygon = PoolVector2Array( -0.00831604, 147.23, -0.405167, 175.605, -0.405167, 175.605, 79.957, 175.803, 80.3539, 111.91, 175.201, 112.307, 176.261, 175.426, 335.455, 175.954, 335.955, 207.156, 368.158, 207.49, 368.325, 175.621, 640.019, 175.586, 640.019, 146.964, 205.205, 147.244, 205.065, 83.1236, 51.0071, 83.264, 51.007, 147.244 )
+
+[node name="PlacementArea2" type="Area2D" parent="."]
+pause_mode = 2
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlacementArea2"]
+polygon = PoolVector2Array( 0.0752029, 208.175, 0.262489, 236.642, 274.761, 237.074, 274.928, 268.777, 428.652, 268.831, 428.652, 237.02, 639.737, 237.02, 639.737, 208.182, 400.26, 208.33, 400.111, 240.29, 303.637, 239.844, 303.34, 207.884, 143.837, 208.033, 143.54, 144.559, 111.729, 144.559, 112.026, 208.33 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 3 )]
 
