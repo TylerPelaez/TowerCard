@@ -8,6 +8,8 @@ var triggered = false
 var initialized = false
 var physics_ran_once = false
 
+onready var empParticle = load("res://Particles/EMPEffect.tscn")
+
 func initialize(newDirection: Vector2, target: Vector2, intitialPos: Vector2, newSpell: Spell) -> void:
 	global_position = target
 	spell = newSpell
@@ -29,6 +31,9 @@ func _physics_process(delta):
 				
 		empTimer.start()
 		$Sound.play()
+		var newParticle = empParticle.instance()
+		add_child(newParticle)
+		newParticle.restart()
 		
 
 func _on_EMPTimer_timeout():
