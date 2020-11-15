@@ -28,7 +28,7 @@ func set_player_controller(playerController: PlayerController) -> void:
 	player_controller = playerController
 	player_controller.connect("card_played", self, "_on_CardPlayed")
 	player_controller.connect("card_deselected", self, "_on_CardDeselected")
-	mana.text = "Mana: " + str(playerController.current_mana)
+	mana.text = "Energy: " + str(playerController.current_mana)
 
 func _on_ShowTooltip(tooltip_text):
 	tooltip.text = tooltip_text
