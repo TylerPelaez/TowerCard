@@ -25,6 +25,7 @@ export var draw_range: bool = false
 func _ready() -> void:
 	sprite.modulate = GREEN_TRANSPARENT_COLOR
 	draw_range = true
+	print(pause_mode)
 
 func _process(delta: float) -> void:
 	if animationPlayer.get_current_animation() != "Idle" && !animationPlayer.is_playing() and animationPlayer.has_animation("Idle"):

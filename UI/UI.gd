@@ -9,6 +9,8 @@ onready var startWave = $StartWave
 onready var waveNumber = $WaveNumber
 onready var cardRewardScreen = $CardRewardScreen
 onready var mana = $Mana
+onready var play = $HBoxContainer/Play
+onready var fastForward = $HBoxContainer/FastForward
 
 var player_controller
 var selected_card
@@ -102,9 +104,26 @@ func show_hand_ui():
 
 
 func _on_CardRewardScreen_card_clicked(ui_card: UICard):
-	Deck.discardCard(ui_card.card_data)
+	if ui_card != null:
+		Deck.discardCard(ui_card.card_data)
 	
 	startWave.visible = true
 	cardRewardScreen.hide()
 	hand.draw_new_hand()
 	show_hand_ui()
+
+
+func _on_Play_pressed():
+	fastForward.visible = true
+	fastForward.mouse_filter = MOUSE_FILTER_STOP
+	play.visible = false
+	play.mouse_filter = MOUSE_FILTER_IGNORE
+	Engine.time_scale = 1.0
+
+
+func _on_FastForward_pressed():
+	fastForward.visible = false
+	fastForward.mouse_filter = MOUSE_FILTER_IGNORE
+	play.visible = true
+	play.mouse_filter = MOUSE_FILTER_STOP
+	Engine.time_scale = 2.0

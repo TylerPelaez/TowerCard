@@ -72,10 +72,12 @@ func _unhandled_input(event):
 				_cast_spell()
 			elif ui_state == STATE.PLACING_TOWER and held_tower != null:
 				if !can_place_held_tower():
+					print (held_tower.get_overlapping_areas())
 					var upgradable_tower = get_upgradable_tower()
 					if upgradable_tower != null:
 						_spend_tower_on_upgrade(upgradable_tower)
 				else:
+					print("test")
 					_place_tower()
 		elif event.is_pressed() and event.is_action("cancel_tower_placement"):
 			if selected_card == null:

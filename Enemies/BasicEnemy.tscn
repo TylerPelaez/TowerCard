@@ -56,9 +56,6 @@ tracks/0/keys = {
 }
 
 [node name="BaseEnemy" instance=ExtResource( 1 )]
-speed = 30.0
-max_health = 10
-damage = 10.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Deck/Hand.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/CardsInDeck.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://UI/UI.gd" type="Script" id=5]
 [ext_resource path="res://chary___.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://UI/CardRewardScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Play.png" type="Texture" id=8]
+[ext_resource path="res://UI/FastForward.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
@@ -15,6 +17,7 @@ font_data = ExtResource( 6 )
 default_font = SubResource( 1 )
 
 [node name="UI" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.840881
@@ -115,10 +118,54 @@ __meta__ = {
 }
 
 [node name="CardRewardScreen" parent="." instance=ExtResource( 7 )]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 32.0
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="TextureButton" parent="HBoxContainer"]
+pause_mode = 2
+visible = false
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+focus_mode = 0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="FastForward" type="TextureButton" parent="HBoxContainer"]
+pause_mode = 2
+margin_left = 18.0
+margin_right = 50.0
+margin_bottom = 32.0
+focus_mode = 0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 10 )
+texture_focused = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="HandButton" to="Hand" method="_on_HandButton_pressed"]
-[connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="HandButton" to="CardsInDeck" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="StartWave" to="." method="_on_StartWave_pressed"]
 [connection signal="card_clicked" from="CardRewardScreen" to="." method="_on_CardRewardScreen_card_clicked"]
 [connection signal="hide_tooltip" from="CardRewardScreen" to="." method="_on_HideTooltip"]
 [connection signal="show_tooltip" from="CardRewardScreen" to="." method="_on_ShowTooltip"]
+[connection signal="pressed" from="HBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="HBoxContainer/FastForward" to="." method="_on_FastForward_pressed"]
