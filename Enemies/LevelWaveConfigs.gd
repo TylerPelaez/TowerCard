@@ -6,13 +6,14 @@ enum LevelConfig {
 
 enum {
 	Basic,
-	Fast
+	Fast,
+	Tank
 }
 
 const DATA = {
 	LevelConfig.TestLevel: [
 		[
-			{Fast: 10},
+			{Tank: 5},
 		],
 		[
 			{Basic: 15}
@@ -26,5 +27,6 @@ const DATA = {
 
 var CONFIGS_TO_SCENES = { 
 	Basic: preload("res://Enemies/BasicEnemy.tscn"),
-	Fast: preload("res://Enemies/FastEnemy.tscn")
+	Fast: preload("res://Enemies/FastEnemy.tscn"),
+	Tank: preload("res://Enemies/TankEnemy.tscn")
 }

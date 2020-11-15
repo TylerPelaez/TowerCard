@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemies/BaseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/BasicEnemyCollisionShape.tres" type="Shape2D" id=2]
+
+[node name="TankEnemy" instance=ExtResource( 1 )]
+speed = 20.0
+max_health = 50
+
+[node name="CollisionShape2D" parent="TowerDetectionArea" index="0"]
+shape = ExtResource( 2 )
+
+[node name="Collider" parent="Hurtbox" index="0"]
+shape = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+
+[editable path="Hurtbox"]

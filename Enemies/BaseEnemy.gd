@@ -53,7 +53,8 @@ func set_health(value: int) -> void:
 		newBoom.restart()
 		
 		emit_signal("enemy_death")
-		$AnimationPlayer.play("Die")
+		if $AnimationPlayer.has_animation("Die"):
+			$AnimationPlayer.play("Die")
 		$DieSound.play()
 		
 func died():
