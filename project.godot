@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "PathFollow2D",
+"base": "Node2D",
 "class": "BaseEnemy",
 "language": "GDScript",
 "path": "res://Enemies/BaseEnemy.gd"

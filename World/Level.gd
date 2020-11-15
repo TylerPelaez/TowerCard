@@ -51,6 +51,7 @@ func _process(delta: float) -> void:
 		print("WAVE COMPLETE")
 		if current_wave == total_waves:
 			# LOAD NEXT LEVEL HERE
+			Deck.reset()
 			Utils.level = Utils.level + 1
 			get_tree().change_scene(Utils.get_scene(Utils.level))	
 	
