@@ -12,7 +12,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 64, 64, 0, 0, 0, 0, 96, 64, 0, 0, 0, 0, 96, 128, 0, 0, 0, 0, 544, 128, 0, 0, 0, 0, 544, 224, 0, 0, 0, 0, 128, 224, 0, 0, 0, 0, 128, 320, 0, 0, 0, 0, 480, 320, 0, 0, 0, 0, 480, 448 )
 }
 
-[node name="TestLevel" type="Node2D"]
+[node name="TestLevel" type="YSort"]
 script = ExtResource( 4 )
 
 [node name="TileMap" parent="." instance=ExtResource( 6 )]

@@ -7,6 +7,7 @@ signal spawner_enemy_attacked_core(damage)
 onready var spawnTimer = $SpawnTimer
 
 var enemy_spawn_target
+var enemy_path
 var spawn_configuration := []
 var current_wave_configuration := []
 
@@ -16,8 +17,9 @@ var current_wave_enemy_death_count := 0
 func _ready():
 	pass
 
-func initialize(enemySpawnTarget: Node, levelConfig: int) -> void:
+func initialize(enemySpawnTarget: Node, enemyPath: Path2D, levelConfig: int) -> void:
 	enemy_spawn_target = enemySpawnTarget
+	enemy_path = enemyPath
 	print(LevelWaveConfigs.DATA[levelConfig])
 	spawn_configuration = []
 	for wave in LevelWaveConfigs.DATA[levelConfig]:
@@ -42,7 +44,8 @@ func start_wave(wave_number: int) -> void:
 func _spawnEnemy(resource: Resource) -> void:
 	var instance = resource.instance()
 	enemy_spawn_target.add_child(instance)
-	instance.global_position = enemy_spawn_target.global_position
+	instance.initialize(enemy_path)
+	
 	instance.connect("enemy_death", self, "_onEnemy_death")
 	instance.connect("enemy_attacked_core", self, "_onEnemy_attacked_core")
 

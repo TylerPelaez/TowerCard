@@ -1,8 +1,10 @@
-extends PathFollow2D
+extends Node2D
 class_name BaseEnemy
 
 signal enemy_death
 signal enemy_attacked_core(damage)
+
+const EnemyPathFollow = preload("res://Enemies/EnemyPathFollow.tscn")
 
 export var speed: float = 30.0
 export var max_health: int = 10
@@ -23,6 +25,16 @@ var speed_multipliers = []
 var dying := false
 
 var frozen = false
+var enemyPathFollow
+
+
+func _ready():
+	enemyPathFollow = EnemyPathFollow.instance()
+	
+func initialize(pathFollowParent: Node):
+	pathFollowParent.add_child(enemyPathFollow)
+	enemyPathFollow.set_offset(0)
+	enemyPathFollow.remoteTransform.remote_path = enemyPathFollow.remoteTransform.get_path_to(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,8 +42,8 @@ func _process(delta):
 		var current_speed = speed
 		for multiplier in speed_multipliers:
 			current_speed = current_speed * (1 - multiplier.slow_amount)
-		set_offset(get_offset() + (current_speed * delta))
-		z_index = floor(get_offset())
+		enemyPathFollow.set_offset(enemyPathFollow.get_offset() + (current_speed * delta))
+#		z_index = floor(enemyPathFollow.get_offset())
 	
 func set_health(value: int) -> void:
 	health = clamp(value, 0, max_health)
@@ -88,3 +100,7 @@ func _on_Hurtbox_area_entered(area):
 func _on_Hurtbox_area_exited(area):
 	if area.get_parent() is SlowFieldPivot:
 		speed_multipliers.erase(area.get_parent())
+
+
+func get_unit_offset() -> float:
+	return enemyPathFollow.unit_offset

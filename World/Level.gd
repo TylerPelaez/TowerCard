@@ -28,7 +28,7 @@ func _ready():
 	VisualServer.set_default_clear_color(Color("#222222"))
 	playerController.set_level_placement_area(placementArea)
 	playerController.connect("heal_core", self, "on_core_healed")
-	enemySpawnController.initialize(enemyPath, level_config)
+	enemySpawnController.initialize(self, enemyPath,level_config)
 	total_waves = enemySpawnController.get_wave_count()
 	ui.set_player_controller(playerController)
 	

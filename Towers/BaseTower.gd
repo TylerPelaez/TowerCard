@@ -75,8 +75,8 @@ func find_target():
 	var target = null
 	for area in overlappingAreas:
 		var areaParent = area.get_parent()
-		if areaParent is BaseEnemy && areaParent.unit_offset > maxUnitOffset:
-			maxUnitOffset = areaParent.unit_offset
+		if areaParent is BaseEnemy && areaParent.get_unit_offset() > maxUnitOffset:
+			maxUnitOffset = areaParent.get_unit_offset()
 			target = areaParent
 	
 	return target
