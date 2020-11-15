@@ -53,11 +53,13 @@ func _on_SpawnTimer_timeout():
 	if !current_wave_configuration.empty():
 		spawnTimer.start()
 	else:
+		print("EMIT FINISHED SPAWNING")
 		emit_signal("wave_finished_spawning")
 	
 func _onEnemy_death():
 	current_wave_enemy_death_count += 1
 	if current_wave_enemy_death_count == current_wave_total_enemy_count:
+		print("EMIT ENEMIES DEAD")
 		emit_signal("wave_finished_enemy_death")
 
 func _onEnemy_attacked_core(damage: float):

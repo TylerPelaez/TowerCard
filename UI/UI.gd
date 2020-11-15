@@ -7,6 +7,8 @@ onready var tooltip = $Tooltip
 var player_controller
 var selected_card
 
+signal start_wave
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hand.connect("show_tooltip", self, "_on_ShowTooltip")
@@ -59,3 +61,7 @@ func _on_CardDeselected() -> void:
 	handButton.visible = true
 	handButton.mouse_filter = MOUSE_FILTER_PASS
 	_on_HideTooltip()
+
+
+func _on_StartWave_pressed():
+	emit_signal("start_wave")
