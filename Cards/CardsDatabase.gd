@@ -9,24 +9,24 @@ const DATA = {
 	Missile:
 		["Missile", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/MissileCard.png", "Missile Strike\nDoes AOE damage", false, Missile, 0],
 	LightningCard:
-		["Lightning", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/LightningTowerCard.png", "Lightning Tower\nChains lightning\nto multiple foes", false, preload("res://Towers/LightningTower.tscn"), 1],
+		["Lightning", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/LightningTowerCard.png", "Lightning Tower\nChains lightning\nto multiple foes", false, preload("res://Towers/LightningTower.tscn"), 2],
 	RepulsorTowerCard:
 		["Repulsor", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/RepulsorTowerCard.png", "Repulsor Tower\nR to rotate\nSlows foes", false, preload("res://Towers/RepulsorTower.tscn"), 1],
 	EMPCard:
 		["EMP", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/EMPCard.png", "Electro-Magnetic\nPulse\nStuns foes", false, EMPCard, 1],
 	HealCore:
-		["Heal Core", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/HealCoreCard.png", "Heals Core Damage\nSingle Use", true, HealCore, 1]
+		["Heal Core", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/HealCoreCard.png", "Heals 30\nCore Damage\nSingle Use", true, HealCore, 1]
 }
 
 # Too lazy to move this to another class.
 # spell format: [name, aoe radius, damage, single target, scene]
 const SPELL_DATA = {
 	Missile:
-		["Missile", 50, 5, false, preload("res://Spells/MissileProjectile.tscn")],
+		["Missile", 50, 7, false, preload("res://Spells/MissileProjectile.tscn")],
 	EMPCard:
 		["EMP", 75, 0, false, preload("res://Spells/EMPProjectile.tscn")],
 	HealCore:
-		["Heal Core", 0, 10, false, null] # Damage is the heal amount
+		["Heal Core", 0, 30, false, null] # Damage is the heal amount
 }
 
 func create_card_from_data(cardData: Array) -> Card:

@@ -12,4 +12,5 @@ func get_class_name():
 	return "BasicTower"
 
 func upgrade()-> void:
-	self.damage += 2
+	self.damage += 1
+	self.base_damage += 1

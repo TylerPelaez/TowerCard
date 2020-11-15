@@ -79,7 +79,9 @@ script = ExtResource( 3 )
 Projectile = ExtResource( 4 )
 attack_range = 75.0
 projectile_speed = 150.0
+base_damage = 1
 max_damage = 10
+damage = 1
 
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource( 1 )
