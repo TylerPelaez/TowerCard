@@ -41,17 +41,19 @@ func _unhandled_input(event):
 			if selected_card == null:
 				print("ERROR: selected_card is null")
 				return
-			
 			if ui_state == STATE.CASTING and selected_spell != null:
 				_cast_spell()
-			elif ui_state == STATE.PLACING_TOWER and held_tower != null:
+			elif ui_state == STATE.PLACING_TOWER and held_tower != null and can_place_held_tower():
 				_place_tower()
 		elif event.is_pressed() and event.is_action("cancel_tower_placement"):
 			if selected_card == null:
 				print("ERROR: selected card is null")
 				return
-			
 			cancel_card_play()
+	elif event.is_pressed() and event.is_action("rotate") and ui_state == STATE.PLACING_TOWER and held_tower != null:
+		if held_tower.can_rotate():
+			held_tower.rotate_tower()
+			
 
 func set_level_placement_area(area: Node) -> void:
 	level_placement_area = area
