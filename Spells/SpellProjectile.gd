@@ -43,12 +43,12 @@ func trigger_effect() -> void:
 		newBoom.restart()
 		
 		$ExplodeSound.play()
-	exploded = true
-	var overlapping = enemyDetectionArea.get_overlapping_areas()
+		exploded = true
+		var overlapping = enemyDetectionArea.get_overlapping_areas()
 	
-	for area in overlapping:
-		if area.get_parent() is BaseEnemy:
-			area.get_parent().health -= spell.damage
+		for area in overlapping:
+			if area.get_parent() is BaseEnemy:
+				area.get_parent().health -= spell.damage
 	$Sprite.visible = false
 	
 
