@@ -25,7 +25,7 @@ func set_health(value: int) -> void:
 	health = clamp(value, 0, max_health)
 	healthBar.rect_size.x = (float(health) / float(max_health)) * float(maxHealthBar.rect_size.x)
 	
-	if health <= 0:
+	if health <= 0 && !dying:
 		dying = true
 		emit_signal("enemy_death")
 		$AnimationPlayer.play("Die")

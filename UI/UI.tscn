@@ -64,6 +64,14 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="StartWave" type="Button" parent="."]
+margin_left = 271.0
+margin_top = 154.5
+margin_right = 351.0
+margin_bottom = 174.5
+text = "Start Wave"
 [connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="HandButton" to="CardsInDeck" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="HandButton" to="Hand" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="StartWave" to="." method="_on_StartWave_pressed"]
