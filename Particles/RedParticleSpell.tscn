@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Particles/redParticle.png" type="Texture" id=1]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 0.2
+angular_velocity = 74.48
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="RedParticle" type="Particles2D"]
+amount = 16
+explosiveness = 0.2
+process_material = SubResource( 1 )
+texture = ExtResource( 1 )
