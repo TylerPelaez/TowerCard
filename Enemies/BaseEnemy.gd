@@ -19,13 +19,17 @@ onready var gib = load("res://Particles/RedParticle.tscn")
 onready var boom = load("res://Particles/OrangeParticle.tscn")
 onready var spark = load("res://Particles/YellowParticle.tscn")
 
+var speed_multipliers = []
 var dying := false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !dying:	
-		set_offset(get_offset() + (speed * delta))
+	if !dying:
+		var current_speed = speed
+		for multiplier in speed_multipliers:
+			current_speed = current_speed * (1 - multiplier.slow_amount)
+		set_offset(get_offset() + (current_speed * delta))
 		z_index = floor(get_offset())
 	
 func set_health(value: int) -> void:
@@ -71,3 +75,13 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_begin_death():
 	towerDetectionArea.monitorable = false
 	hurtbox.monitorable = false
+
+# Slow field entered
+func _on_Hurtbox_area_entered(area):
+	if area.get_parent() is SlowFieldPivot:
+		speed_multipliers.append(area.get_parent())
+
+#Slow field exited
+func _on_Hurtbox_area_exited(area):
+	if area.get_parent() is SlowFieldPivot:
+		speed_multipliers.erase(area.get_parent())

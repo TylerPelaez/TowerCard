@@ -3,6 +3,7 @@ class_name BaseTower
 
 const RED_TRANSPARENT_COLOR: Color = Color(1, 0, 0, 0.5)
 const GREEN_TRANSPARENT_COLOR: Color = Color(0, 1, 0, 0.5)
+const BLUE_TRANSPARENT_COLOR: Color = Color(0, 0, 1, 0.5)
 const DEFAULT_COLOR: Color = Color(1, 1, 1, 1)
 
 export (PackedScene) var Projectile
@@ -26,7 +27,7 @@ func _ready() -> void:
 	draw_range = true
 
 func _process(delta: float) -> void:
-	if animationPlayer.get_current_animation() != "Idle" && !animationPlayer.is_playing():
+	if animationPlayer.get_current_animation() != "Idle" && !animationPlayer.is_playing() and animationPlayer.has_animation("Idle"):
 		animationPlayer.play("Idle")
 	
 func _physics_process(delta: float) -> void:
@@ -96,3 +97,21 @@ func set_cant_place_color() -> void:
 	
 func set_can_place_color() -> void:
 	sprite.modulate = GREEN_TRANSPARENT_COLOR
+
+func set_can_upgrade_color() -> void:
+	sprite.modulate = BLUE_TRANSPARENT_COLOR
+
+func set_regular_color() -> void:
+	sprite.modulate = DEFAULT_COLOR
+
+func can_rotate() -> bool:
+	return false
+
+func rotate_tower() -> void:
+	pass
+
+func get_class_name():
+	return "BaseTower"
+	
+func upgrade() -> void:
+	pass

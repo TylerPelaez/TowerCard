@@ -80,6 +80,7 @@ script = ExtResource( 3 )
 Projectile = ExtResource( 4 )
 attack_range = 75.0
 projectile_speed = 150.0
+max_damage = 10
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )

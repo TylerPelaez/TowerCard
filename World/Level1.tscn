@@ -22,12 +22,10 @@ tile_data = PoolIntArray( 0, 10, 0, 1, 7, 0, 2, 14, 0, 3, 10, 0, 4, 10, 0, 5, 10
 curve = SubResource( 1 )
 
 [node name="PlacementArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlacementArea"]
-visible = false
 polygon = PoolVector2Array( 0, 0, 32, 0, 32, 96, 64, 96, 64, 160, 512, 160, 512, 192, 96, 192, 96, 352, 448, 352, 448, 408, 512, 408, 512, 288, 160, 288, 160, 256, 576, 256, 576, 96, 128, 96, 128, 32, 96, 32, 96, 0, 640, 0, 640, 416, 0, 416 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 3 )]
