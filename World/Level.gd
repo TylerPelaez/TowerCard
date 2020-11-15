@@ -10,7 +10,7 @@ onready var ui = $CanvasLayer/UI
 
 export (LevelWaveConfigs.LevelConfig) var level_config = LevelWaveConfigs.LevelConfig.TestLevel
 
-export var core_max_health: float = 20.0
+export var core_max_health: float = 100.0
 onready var core_health := core_max_health setget set_core_health
 
 var enemies_done_spawning = false
@@ -34,7 +34,7 @@ func _ready():
 	
 	ui.connect("start_wave", self, "_start_wave")
 	
-	$CanvasLayer/UI/WaveNumber.text = "Wave: " + str(current_wave) + "/" + str(total_waves)
+	$CanvasLayer/UI/WaveNumber.text = "Wave: " + str(current_wave+1) + "/" + str(total_waves)
 
 func _process(delta: float) -> void:
 	$CanvasLayer/UI/CoreHP.text = "Core HP: " + str(core_health)

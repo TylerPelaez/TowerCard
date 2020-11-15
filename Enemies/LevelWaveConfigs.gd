@@ -13,14 +13,47 @@ enum {
 const DATA = {
 	LevelConfig.TestLevel: [
 		[
-			{Fast: 1},
+			{Basic: 1},
 		],
 		[
-			{Basic: 15}
+			{Basic: 5}
+		],
+		[
+			{Basic: 5},
+			{Fast: 3}
+		],
+		[
+			{Basic: 7},
+			{Fast: 4}
+		],
+		[
+			{Fast:20}
 		],
 		[
 			{Basic: 15},
-			{Fast: 5}
+			{Fast: 10}
+		],
+		[
+			{Basic:10},
+			{Fast: 5},
+			{Basic:10},
+			{Fast: 5},
+			{Basic:10},
+			{Fast: 5},
+			{Basic:10},
+			{Fast: 5},
+		],
+		[
+			{Basic:30},
+			{Fast: 10},
+			{Basic:30},
+			{Fast: 10},			
+		],
+		[
+			{Tank:6},
+			{Fast: 5},
+			{Tank:6},
+			{Fast: 5},
 		]
 	]
 }

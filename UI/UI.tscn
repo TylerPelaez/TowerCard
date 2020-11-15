@@ -148,8 +148,8 @@ stretch_mode = 2
 
 [node name="FastForward" type="TextureButton" parent="HBoxContainer"]
 pause_mode = 2
-margin_left = 18.0
-margin_right = 50.0
+margin_left = 4.0
+margin_right = 36.0
 margin_bottom = 32.0
 focus_mode = 0
 texture_normal = ExtResource( 10 )
@@ -160,9 +160,9 @@ texture_focused = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HandButton" to="Hand" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="HandButton" to="CardsInDeck" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="HandButton" to="Hand" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="StartWave" to="." method="_on_StartWave_pressed"]
 [connection signal="card_clicked" from="CardRewardScreen" to="." method="_on_CardRewardScreen_card_clicked"]
 [connection signal="hide_tooltip" from="CardRewardScreen" to="." method="_on_HideTooltip"]
