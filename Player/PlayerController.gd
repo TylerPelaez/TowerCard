@@ -13,6 +13,10 @@ enum STATE {
 
 const BasicTowerResource: PackedScene = preload("res://Towers/BasicTower.tscn")
 
+const RedParticle = preload("res://Particles/RedParticleSpell.tscn")
+const YellowParticle = preload("res://Particles/YellowParticleSpell.tscn")
+const GreenParticle = preload("res://Particles/GreenParticle.tscn")
+
 export var max_mana: int = 3
 onready var current_mana = max_mana
 
@@ -21,6 +25,8 @@ var held_tower
 var selected_card
 var selected_spell
 var tower_that_was_being_upgraded
+
+var particleEffect 
 
 
 var level_placement_area
@@ -58,6 +64,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			held_tower.visible = true
 			held_tower.set_can_place_color()
+			
+	if ui_state == STATE.CASTING and particleEffect != null:
+		particleEffect.global_position = get_global_mouse_position()
 
 func _unhandled_input(event):
 	if ui_state == STATE.DEFAULT:
@@ -115,7 +124,15 @@ func _spend_tower_on_upgrade(towerToUpgrade: BaseTower) -> void:
 func _start_casting_spell(spell: SpellCard) -> void:
 	ui_state = STATE.CASTING
 	selected_spell = spell.spell
-
+	
+	match selected_spell.spell_name:
+		"Missile":
+			particleEffect = Utils.instance_scene_on_main(RedParticle, global_position)
+		"EMP":
+			particleEffect = Utils.instance_scene_on_main(YellowParticle, global_position)
+		"Heal Core":
+			particleEffect = Utils.instance_scene_on_main(GreenParticle, global_position)
+		
 func _cast_spell() -> void:
 	if selected_spell.spell_name == "Heal Core":
 		emit_signal("heal_core", selected_spell.damage)
@@ -123,6 +140,9 @@ func _cast_spell() -> void:
 		selected_spell.cast(get_global_mouse_position())
 	selected_spell = null
 	ui_state = STATE.DEFAULT
+	if particleEffect != null:
+		particleEffect.queue_free()
+		particleEffect = null
 	play_card()
 
 func can_place_held_tower() -> bool:
@@ -146,6 +166,10 @@ func get_upgradable_tower():
 func cancel_card_play() -> void:
 	if held_tower != null:
 		held_tower.queue_free()
+		
+	if particleEffect != null:
+		particleEffect.queue_free()
+		particleEffect = null
 	ui_state = STATE.DEFAULT
 	held_tower = null
 	selected_card = null
