@@ -100,4 +100,4 @@ anims/Idle = SubResource( 5 )
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="." index="5"]
 stream = ExtResource( 5 )
-volume_db = -20.0
+volume_db = -25.0
