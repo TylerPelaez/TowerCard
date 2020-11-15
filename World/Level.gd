@@ -22,6 +22,7 @@ var wave_active := false
 func _ready():
 	enemySpawnController.connect("wave_finished_spawning", self, "_on_EnemySpawnController_wave_finished_spawning")
 	enemySpawnController.connect("wave_finished_enemy_death", self, "_on_EnemySpawnController_wave_finished_enemy_death")
+	enemySpawnController.connect("spawner_enemy_attacked_core", self, "_on_EnemySpawnController_damage_core")
 	
 	Utils.level = 1
 	VisualServer.set_default_clear_color(Color("#222222"))
@@ -32,14 +33,19 @@ func _ready():
 	
 	$UI/StartWave.visible = true
 	ui.connect("start_wave", self, "_start_wave")
+	
+	$UI/WaveNumber.text = "Wave: " + str(current_wave) + "/" + str(total_waves)
 
 func _process(delta: float) -> void:
+	$UI/CoreHP.text = "Core HP: " + str(core_health)
+	
 	if all_enemies_killed && enemies_done_spawning:
 		ui.end_wave()
 		wave_active = false
 		all_enemies_killed = false
 		enemies_done_spawning = false
 		$UI/StartWave.visible = true
+		$UI/WaveNumber.text = "Wave: " + str(current_wave) + "/" + str(total_waves)
 		print("WAVE COMPLETE")
 		if current_wave == total_waves:
 			# LOAD NEXT LEVEL HERE
@@ -65,6 +71,10 @@ func _on_EnemySpawnController_wave_finished_spawning():
 func _on_EnemySpawnController_wave_finished_enemy_death():
 	print("ALL ENEMIES KILLED")
 	all_enemies_killed = true
+
+func _on_EnemySpawnController_damage_core(damage):
+	var newHP = core_health-damage
+	set_core_health(newHP)
 
 func set_core_health(value: float):
 	core_health = clamp(value, 0, core_max_health)

@@ -17,8 +17,10 @@ func _ready():
 
 
 func _on_Restart_pressed():
+	Deck.reset()
 	get_tree().change_scene(Utils.get_scene(Utils.level))
 
 
 func _on_Menu_pressed():
+	Deck.reset()
 	get_tree().change_scene("res://Menu/Menu.tscn")
