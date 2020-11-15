@@ -142,6 +142,7 @@ Utils="*res://Utils.gd"
 CardsDatabase="*res://Cards/CardsDatabase.gd"
 Deck="*res://Deck/Deck.gd"
 LevelWaveConfigs="*res://Enemies/LevelWaveConfigs.gd"
+BackgroundMusic="*res://BackgroundMusic.tscn"
 
 [display]
 
