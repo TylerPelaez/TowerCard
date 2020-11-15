@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemies/BaseEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Other/Hurtbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Hit_Hurt67.wav" type="AudioStream" id=3]
+[ext_resource path="res://Enemies/Explosion93.wav" type="AudioStream" id=4]
 
 [node name="BaseEnemy" type="PathFollow2D"]
 rotate = false
@@ -43,5 +45,13 @@ margin_bottom = 3.0
 color = Color( 0, 1, 0.227451, 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -25.0
+
+[node name="DieSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
 [connection signal="hit" from="Hurtbox" to="." method="_on_Hurtbox_hit"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

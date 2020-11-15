@@ -102,6 +102,10 @@ config/name="TowerCard"
 run/main_scene="res://Menu/Menu.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout=""
+
 [autoload]
 
 Utils="*res://Utils.gd"

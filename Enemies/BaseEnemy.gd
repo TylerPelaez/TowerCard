@@ -49,6 +49,7 @@ func set_health(value: int) -> void:
 		
 		emit_signal("enemy_death")
 		$AnimationPlayer.play("Die")
+		$DieSound.play()
 		
 func died():
 	queue_free()
@@ -58,6 +59,7 @@ func _on_Hurtbox_hit(damage):
 	add_child(newBleed)
 	newBleed.restart()
 	self.health -= damage
+	$HitSound.play()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	if dying:

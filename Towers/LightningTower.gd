@@ -28,6 +28,7 @@ func _process(delta):
 func _fire(target: BaseEnemy) -> void:
 	is_firing_lightning = true
 	animationPlayer.play("Attack")
+	$ShootSound.play()
 	stopLightningTimer.start()
 	fireBulletTimer.start()
 	_cast_lightning(target)
