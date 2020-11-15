@@ -35,6 +35,7 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if all_enemies_killed && enemies_done_spawning:
+		ui.end_wave()
 		wave_active = false
 		all_enemies_killed = false
 		enemies_done_spawning = false

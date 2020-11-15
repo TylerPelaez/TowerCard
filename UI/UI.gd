@@ -62,6 +62,10 @@ func _on_CardDeselected() -> void:
 	handButton.mouse_filter = MOUSE_FILTER_PASS
 	_on_HideTooltip()
 
+func end_wave() -> void:
+	if selected_card != null:
+		player_controller.cancel_card_play()
+	hand.draw_new_hand()
 
 func _on_StartWave_pressed():
 	emit_signal("start_wave")

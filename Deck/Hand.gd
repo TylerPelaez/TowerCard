@@ -11,7 +11,7 @@ signal hide_tooltip
 signal card_clicked(ui_card)
 
 func _ready() -> void:
-	visible = false
+	visible = true
 	draw_new_hand()
 
 func draw_new_hand() -> void:
@@ -39,7 +39,7 @@ func add_card(cardData: Card) -> bool:
 func discard_card(card: UICard) -> bool:
 	# If the card isn't a trash card, add it to the discard pile
 	if (card.card_data.trashes == false):
-		Deck.discardCard(card.card_data.duplicate())
+		Deck.discardCard(card.card_data)
 	for child in get_children():
 		if child == card:
 			remove_child(card)

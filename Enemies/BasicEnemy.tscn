@@ -61,7 +61,7 @@ tracks/0/keys = {
 texture = ExtResource( 2 )
 offset = Vector2( 0, -4 )
 hframes = 6
-frame = 4
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 autoplay = "Walk"
@@ -81,19 +81,7 @@ visible = false
 [node name="Collider" parent="Hurtbox" index="0"]
 shape = ExtResource( 3 )
 
-[node name="Control" parent="." index="4"]
-margin_left = -9.0
-margin_top = -18.0
-margin_right = 9.0
-margin_bottom = -15.0
-
 [node name="MaxHealthBar" parent="Control" index="0"]
-margin_right = 18.0
-margin_bottom = 3.0
 grow_horizontal = 2
-
-[node name="HealthBar" parent="Control" index="1"]
-margin_right = 18.0
-margin_bottom = 3.0
 
 [editable path="Hurtbox"]

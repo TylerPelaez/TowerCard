@@ -4,9 +4,6 @@ signal wave_finished_spawning
 signal wave_finished_enemy_death
 signal spawner_enemy_attacked_core(damage)
 
-var enemyConfigsToScenes = { LevelWaveConfigs.Basic: preload("res://Enemies/BasicEnemy.tscn") }
-
-
 onready var spawnTimer = $SpawnTimer
 
 var enemy_spawn_target
@@ -45,7 +42,7 @@ func _spawnEnemy(resource: Resource) -> void:
 
 func _on_SpawnTimer_timeout():
 	var currentEnemyConfigName = current_wave_configuration[0].keys()[0]
-	var currentEnemyPackedScene = enemyConfigsToScenes[currentEnemyConfigName]
+	var currentEnemyPackedScene = LevelWaveConfigs.CONFIGS_TO_SCENES[currentEnemyConfigName]
 	_spawnEnemy(currentEnemyPackedScene)
 	current_wave_configuration[0][currentEnemyConfigName] -= 1
 	if current_wave_configuration[0][currentEnemyConfigName] <= 0:

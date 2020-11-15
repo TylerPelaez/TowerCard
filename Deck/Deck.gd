@@ -5,14 +5,19 @@ var discardPile = []
 var trashPile = []
 var hand = []
 
+const STARTING_DECK = {
+	CardsDatabase.LightningCard: 2,
+	CardsDatabase.Bunker: 4,
+	CardsDatabase.Missile: 3
+}
+
 func _ready():
-	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Lightning]))
-	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
-	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
-	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
-	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Missile]))
-	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Missile]))
-		
+	for key in STARTING_DECK.keys():
+		for i in range(STARTING_DECK[key]):
+			drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[key]))
+	
+	shuffleDeck()
+	
 # Draw the top card of the deck
 # Puts it in the hand
 func drawCard():

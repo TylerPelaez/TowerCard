@@ -5,10 +5,10 @@
 [ext_resource path="res://Towers/LightningTower.gd" type="Script" id=3]
 [ext_resource path="res://Towers/Lightning.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Attack"
 length = 0.4
 tracks/0/type = "value"
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [ 0, 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "Idle"
 length = 0.1
 loop = true
@@ -41,7 +41,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
 
 void fragment() {
@@ -49,19 +49,20 @@ void fragment() {
 }"
 custom_defines = ""
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.101493, 0.772727 ), 0.0, 0.0, 0, 0, Vector2( 0.173134, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.325373, 0.718182 ), 0.0, 0.0, 0, 0, Vector2( 0.435821, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.540299, 0.509091 ), -0.840126, -0.840126, 0, 0, Vector2( 0.686567, 0.818182 ), 0.0, 0.0, 0, 0, Vector2( 0.737313, 0.572727 ), 0.0, 0.0, 0, 0, Vector2( 0.785075, 0.7 ), 0.0, 0.0, 0, 0, Vector2( 0.874627, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 0.99403, 0.454545 ), 0.0, 0.0, 0, 0 ]
 
 [node name="LightningTower" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-attack_range = 75.0
+attack_range = 50.0
 projectile_speed = 50.0
-base_damage = 1
-damage = 1
-bounce_range = 50
+base_damage = 2
+damage = 2
+chain_limit = 2
+bounce_range = 25
 
 [node name="FireBulletTimer" parent="." index="1"]
 wait_time = 2.0
@@ -73,12 +74,12 @@ hframes = 5
 frame = 3
 
 [node name="PlacementCollider" parent="." index="3"]
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 autoplay = "Idle"
-anims/Attack = SubResource( 6 )
-anims/Idle = SubResource( 7 )
+anims/Attack = SubResource( 2 )
+anims/Idle = SubResource( 3 )
 
 [node name="LightningOrigin" type="Position2D" parent="." index="5"]
 position = Vector2( 0, -15 )
@@ -88,11 +89,11 @@ wait_time = 0.9
 one_shot = true
 
 [node name="LightningLine" type="Line2D" parent="." index="7"]
-material = SubResource( 4 )
+material = SubResource( 5 )
 z_index = 4096
 z_as_relative = false
 width = 4.0
-width_curve = SubResource( 5 )
+width_curve = SubResource( 6 )
 default_color = Color( 0.4, 0.501961, 1, 1 )
 texture = ExtResource( 4 )
 texture_mode = 1

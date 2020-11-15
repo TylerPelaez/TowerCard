@@ -1,14 +1,14 @@
 extends Node
 
 # Card format: [cardName, cardType, image, text, trashes]
-enum {Bunker, Lightning, Missile}
+enum {Bunker, LightningCard, Missile}
 
 const DATA = {
 	Bunker:	
 		["Bunker", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/BunkerCard.png", "Basic Bunker", false, preload("res://Towers/BasicTower.tscn")],
 	Missile:
 		["Missile", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/MissileCard.png", "Missile Strike", false, Missile],
-	Lightning:
+	LightningCard:
 		["Lightning", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/LightningTowerCard.png", "Lightning Tower", false, preload("res://Towers/LightningTower.tscn")]
 }
 

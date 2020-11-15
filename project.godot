@@ -107,7 +107,7 @@ config/icon="res://icon.png"
 Utils="*res://Utils.gd"
 CardsDatabase="*res://Cards/CardsDatabase.gd"
 Deck="*res://Deck/Deck.gd"
-LevelWaveConfigs="*res://World/LevelWaveConfigs.gd"
+LevelWaveConfigs="*res://Enemies/LevelWaveConfigs.gd"
 
 [display]
 
