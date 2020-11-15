@@ -1,9 +1,12 @@
 extends SpellProjectile
 class_name EMPProjectile
 
+onready var empTimer = $EMPTimer
+
 var stopped_enemies = []
 var triggered = false
 var initialized = false
+var physics_ran_once = false
 
 func initialize(newDirection: Vector2, target: Vector2, intitialPos: Vector2, newSpell: Spell) -> void:
 	global_position = target
@@ -13,12 +16,25 @@ func initialize(newDirection: Vector2, target: Vector2, intitialPos: Vector2, ne
 
 func _physics_process(delta):
 	if !triggered and initialized:
+		if !physics_ran_once:
+			physics_ran_once = true
+			return
+		
 		triggered = true
-		stopped_enemies = enemyDetectionArea.get_overlapping_areas()
-		for enemy in stopped_enemies:
-			pass
+		var areas = enemyDetectionArea.get_overlapping_areas()
+		for area in areas:
+			if area.get_parent() is BaseEnemy and !area.get_parent().frozen:
+				stopped_enemies.append(area.get_parent())
+				area.get_parent().frozen = true
+				
+		empTimer.start()
+		
 
 func _on_EMPTimer_timeout():
+	for enemy in stopped_enemies:
+		if enemy != null and enemy.frozen:
+			enemy.frozen = false
+	stopped_enemies.clear()
 	queue_free()
 
 

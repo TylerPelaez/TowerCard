@@ -22,7 +22,7 @@ const SPELL_DATA = {
 	Missile:
 		["Missile", 50, 5, false, preload("res://Spells/MissileProjectile.tscn")],
 	EMPCard:
-		["EMP", Card.CARD_TYPE.SPELL, 100, 0, false, preload("res://Spells/EMPSpell.tscn")]
+		["EMP", 75, 0, false, preload("res://Spells/EMPProjectile.tscn")]
 }
 
 func create_card_from_data(cardData: Array) -> Card:

@@ -9,7 +9,8 @@ const STARTING_DECK = {
 	CardsDatabase.LightningCard: 3,
 	CardsDatabase.Bunker: 4,
 	CardsDatabase.Missile: 6,
-	CardsDatabase.RepulsorTowerCard: 2
+	CardsDatabase.RepulsorTowerCard: 2,
+	CardsDatabase.EMPCard: 100
 }
 
 func _ready():

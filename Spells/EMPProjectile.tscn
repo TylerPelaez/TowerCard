@@ -8,7 +8,7 @@ script = ExtResource( 2 )
 speed = 10.0
 
 [node name="EMPTimer" type="Timer" parent="." index="2"]
-wait_time = 3.0
+wait_time = 2.4
 one_shot = true
 [connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_EnemyDetectionArea_area_entered"]
 [connection signal="timeout" from="EMPTimer" to="." method="_on_EMPTimer_timeout"]

@@ -22,10 +22,11 @@ onready var spark = load("res://Particles/YellowParticle.tscn")
 var speed_multipliers = []
 var dying := false
 
+var frozen = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !dying:
+	if !dying && !frozen:
 		var current_speed = speed
 		for multiplier in speed_multipliers:
 			current_speed = current_speed * (1 - multiplier.slow_amount)
