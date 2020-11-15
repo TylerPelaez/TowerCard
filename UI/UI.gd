@@ -83,6 +83,7 @@ func end_wave(current_wave: int, total_waves: int) -> void:
 		player_controller.cancel_card_play()
 		
 	player_controller.reset_mana()
+	mana.text = "Mana: " + str(player_controller.current_mana)
 	hide_hand_ui()
 	cardRewardScreen.show()
 	
