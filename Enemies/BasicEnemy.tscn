@@ -61,7 +61,6 @@ tracks/0/keys = {
 texture = ExtResource( 2 )
 offset = Vector2( 0, -4 )
 hframes = 6
-frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 autoplay = "Walk"
