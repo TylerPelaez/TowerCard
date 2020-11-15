@@ -5,13 +5,13 @@ enum {Bunker, LightningCard, Missile, RepulsorTowerCard, EMPCard}
 
 const DATA = {
 	Bunker:	
-		["Bunker", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/BunkerCard.png", "Basic Bunker", false, preload("res://Towers/BasicTower.tscn")],
+		["Bunker", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/BunkerCard.png", "MG Bunker\nShoots bullet at foes", false, preload("res://Towers/BasicTower.tscn")],
 	Missile:
-		["Missile", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/MissileCard.png", "Missile Strike", false, Missile],
+		["Missile", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/MissileCard.png", "Missile Strike\nDoes AOE damage", false, Missile],
 	LightningCard:
-		["Lightning", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/LightningTowerCard.png", "Lightning Tower", false, preload("res://Towers/LightningTower.tscn")],
+		["Lightning", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/LightningTowerCard.png", "Lightning Tower\nChains lightning\nto multiple foes", false, preload("res://Towers/LightningTower.tscn")],
 	RepulsorTowerCard:
-		["Repulsor", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/RepulsorTowerCard.png", "Repulsor Tower", false, preload("res://Towers/RepulsorTower.tscn")],
+		["Repulsor", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/RepulsorTowerCard.png", "Repulsor Tower\nR to rotate\nSlows foes", false, preload("res://Towers/RepulsorTower.tscn")],
 	EMPCard:
 		["EMP", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/EMPCard.png", "Electro-Magnetic Pulse", false, EMPCard]
 }

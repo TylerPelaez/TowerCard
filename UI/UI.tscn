@@ -56,10 +56,10 @@ __meta__ = {
 }
 
 [node name="Tooltip" type="Label" parent="."]
-margin_left = 537.5
-margin_top = 283.5
-margin_right = 637.5
-margin_bottom = 333.5
+margin_left = 500.0
+margin_top = 250.0
+margin_right = 600.0
+margin_bottom = 300.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false

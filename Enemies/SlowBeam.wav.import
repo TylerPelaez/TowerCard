@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SlowBeam.wav-1bab61dd03abe5835f71bf5f2f8292e9.sample"
+
+[deps]
+
+source_file="res://Enemies/SlowBeam.wav"
+dest_files=[ "res://.import/SlowBeam.wav-1bab61dd03abe5835f71bf5f2f8292e9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

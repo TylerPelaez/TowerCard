@@ -73,4 +73,7 @@ autoplay = "Walk"
 anims/Die = SubResource( 1 )
 anims/Walk = SubResource( 2 )
 
+[node name="SlowSound" parent="." index="8"]
+volume_db = -30.0
+
 [editable path="Hurtbox"]
