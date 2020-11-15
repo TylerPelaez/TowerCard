@@ -28,6 +28,7 @@ func _physics_process(delta):
 				area.get_parent().frozen = true
 				
 		empTimer.start()
+		$Sound.play()
 		
 
 func _on_EMPTimer_timeout():
