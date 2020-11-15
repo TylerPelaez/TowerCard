@@ -59,6 +59,9 @@ const DATA = {
 			{Tank:6},
 			{Fast: 5},
 		]
+	],
+	LevelConfig.Level3: [
+		
 	]
 }
 
