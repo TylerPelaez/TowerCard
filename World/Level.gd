@@ -23,7 +23,7 @@ func _ready():
 	enemySpawnController.connect("wave_finished_enemy_death", self, "_on_EnemySpawnController_wave_finished_enemy_death")
 	enemySpawnController.connect("spawner_enemy_attacked_core", self, "_on_EnemySpawnController_damage_core")
 	
-	Utils.level = 1
+	Utils.level = 3
 	VisualServer.set_default_clear_color(Color("#222222"))
 	
 	var placementAreas = []
