@@ -202,6 +202,10 @@ rotate={
 
 2d_physics/layer_1="Towers"
 2d_physics/layer_2="PlacementArea"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="EnemyHurtboxes"
+2d_physics/layer_5="SlowField"
+2d_physics/layer_6="EMPField"
 
 [rendering]
 
