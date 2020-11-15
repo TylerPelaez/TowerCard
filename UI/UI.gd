@@ -3,6 +3,8 @@ extends Control
 onready var handButton = $HandButton
 onready var hand = $Hand
 onready var tooltip = $Tooltip
+onready var cardsInDeck = $CardsInDeck
+onready var cardsInDiscard = $CardsInDiscard
 
 var player_controller
 var selected_card
@@ -32,8 +34,7 @@ func _on_HideTooltip():
 func _on_CardClicked(uiCard: UICard) -> void:
 	selected_card = uiCard
 	player_controller.select_card(uiCard.card_data)
-	hand.visible = false
-	hand.mouse_filter = Control.MOUSE_FILTER_STOP
+	hide_hand_ui()
 	tooltip.text = uiCard.card_data.text
 	tooltip.visible = true
 	handButton.visible = false
@@ -54,8 +55,7 @@ func _on_CardDeselected() -> void:
 		print("ERROR - selected_card is null, but card was deselected")
 		return
 	
-	hand.mouse_filter = Control.MOUSE_FILTER_PASS
-	hand.visible = true
+	show_hand_ui()
 	selected_card.deselect()
 	selected_card = null
 	handButton.visible = true
@@ -69,3 +69,15 @@ func end_wave() -> void:
 
 func _on_StartWave_pressed():
 	emit_signal("start_wave")
+
+func hide_hand_ui():
+	cardsInDeck.visible = false
+	cardsInDiscard.visible = false
+	hand.visible = false
+	hand.mouse_filter = Control.MOUSE_FILTER_STOP
+
+func show_hand_ui():
+	cardsInDeck.visible = true
+	cardsInDiscard.visible = true
+	hand.visible = true
+	hand.mouse_filter = Control.MOUSE_FILTER_PASS
