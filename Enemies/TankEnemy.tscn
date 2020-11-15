@@ -1,11 +1,66 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemies/BaseEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/BasicEnemyCollisionShape.tres" type="Shape2D" id=2]
+[ext_resource path="res://Enemies/ThiccEnemy.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_begin_death"
+}, {
+"args": [  ],
+"method": "died"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Walk"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
 
 [node name="TankEnemy" instance=ExtResource( 1 )]
 speed = 20.0
 max_health = 50
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+hframes = 5
+frame = 4
 
 [node name="CollisionShape2D" parent="TowerDetectionArea" index="0"]
 shape = ExtResource( 2 )
@@ -14,5 +69,8 @@ shape = ExtResource( 2 )
 shape = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+autoplay = "Walk"
+anims/Die = SubResource( 1 )
+anims/Walk = SubResource( 2 )
 
 [editable path="Hurtbox"]

@@ -60,7 +60,7 @@ max_health = 4
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
 hframes = 6
-frame = 1
+frame = 5
 
 [node name="CollisionShape2D" parent="TowerDetectionArea" index="0"]
 shape = ExtResource( 2 )
