@@ -47,10 +47,8 @@ func _process(delta: float) -> void:
 		print("WAVE COMPLETE")
 		if current_wave == total_waves:
 			# LOAD NEXT LEVEL HERE
-			# Utils.level++
-			# get_tree().change_scene(Utils.get_scene(Utils.level))
-			get_tree().quit()
-		
+			Utils.level = 1
+			get_tree().change_scene("res://World/Win.tscn")	
 	
 	if !wave_active && current_wave < total_waves && Input.is_action_just_pressed("start_wave"):
 		_start_wave()
