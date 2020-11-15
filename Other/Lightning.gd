@@ -47,7 +47,6 @@ func _physics_process(delta):
 				
 				emit_signal("create_lightning", instance)
 				sent_lightning = true
-				print(chain_limit)
 				break
 	
 				

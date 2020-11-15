@@ -26,7 +26,6 @@ func _process(delta):
 	
 
 func _fire(target: BaseEnemy) -> void:
-	print("called")
 	is_firing_lightning = true
 	animationPlayer.play("Attack")
 	stopLightningTimer.start()
