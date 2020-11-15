@@ -17,8 +17,9 @@ var dying := false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	set_offset(get_offset() + (speed * delta))
-	z_index = floor(get_offset())
+	if !dying:	
+		set_offset(get_offset() + (speed * delta))
+		z_index = floor(get_offset())
 	
 func set_health(value: int) -> void:
 	health = clamp(value, 0, max_health)
@@ -27,7 +28,10 @@ func set_health(value: int) -> void:
 	if health <= 0:
 		dying = true
 		emit_signal("enemy_death")
-		queue_free()
+		$AnimationPlayer.play("Die")
+		
+func died():
+	queue_free()
 
 func _on_Hurtbox_hit(damage):
 	self.health -= damage
