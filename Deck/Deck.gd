@@ -6,6 +6,7 @@ var trashPile = []
 var hand = []
 
 func _ready():
+	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Lightning]))
 	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
 	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))
 	drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[CardsDatabase.Bunker]))

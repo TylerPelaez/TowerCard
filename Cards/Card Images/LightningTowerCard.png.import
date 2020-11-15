@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LightingTowerCard.png-819e4341510cfe070b0011f07186a650.stex"
+path="res://.import/LightningTowerCard.png-e67099b768b36821b9740f00aecccef2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cards/Card Images/LightingTowerCard.png"
-dest_files=[ "res://.import/LightingTowerCard.png-819e4341510cfe070b0011f07186a650.stex" ]
+source_file="res://Cards/Card Images/LightningTowerCard.png"
+dest_files=[ "res://.import/LightningTowerCard.png-e67099b768b36821b9740f00aecccef2.stex" ]
 
 [params]
 

@@ -21,6 +21,7 @@ var wave_active := false
 
 func _ready():
 	Utils.level = 1
+	VisualServer.set_default_clear_color(Color("#222222"))
 	playerController.set_level_placement_area(placementArea)
 	enemySpawnController.initialize(enemyPath, level_config)
 	total_waves = enemySpawnController.get_wave_count()

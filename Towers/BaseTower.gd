@@ -25,6 +25,10 @@ func _ready() -> void:
 	sprite.modulate = GREEN_TRANSPARENT_COLOR
 	draw_range = true
 
+func _process(delta: float) -> void:
+	if animationPlayer.get_current_animation() != "Idle" && !animationPlayer.is_playing():
+		animationPlayer.play("Idle")
+	
 func _physics_process(delta: float) -> void:
 	if !active:
 		return
