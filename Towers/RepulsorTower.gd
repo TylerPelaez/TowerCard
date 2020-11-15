@@ -50,5 +50,5 @@ func upgrade() -> void:
 	
 	slowFieldPivot.slow_amount = slow_amount
 	slowFieldPivot.particles.amount += 5
-	slowFieldPivot.process_material.initial_velocity += 1.0
+	slowFieldPivot.particles.process_material.initial_velocity += 1.0
 	

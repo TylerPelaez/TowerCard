@@ -27,23 +27,15 @@ tile_data = PoolIntArray( 0, 10, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 1
 show_behind_parent = true
 z_index = -999
 cell_size = Vector2( 32, 32 )
-tile_data = PoolIntArray( 393228, 2, 0, 393229, 2, 0, 393230, 2, 0, 393231, 2, 0, 393232, 3, 0, 393233, 0, 0, 458764, 5, 0, 458765, 5, 0, 524303, 5, 0, 589834, 0, 0 )
+tile_data = PoolIntArray( 131074, 1, 0, 131075, 2, 0, 131076, 2, 0, 131077, 2, 0, 131078, 2, 0, 131079, 2, 0, 131080, 2, 0, 131081, 3, 0, 196610, 4, 0, 196617, 6, 0, 262146, 4, 0, 262153, 6, 0, 327682, 7, 0, 327683, 8, 0, 327684, 8, 0, 327685, 8, 0, 327686, 8, 0, 327687, 8, 0, 327688, 8, 0, 327689, 9, 0, 393226, 1, 0, 393227, 2, 0, 393228, 2, 0, 393229, 2, 0, 393230, 2, 0, 393231, 2, 0, 393232, 2, 0, 393233, 3, 0, 458762, 4, 0, 458769, 6, 0, 524298, 4, 0, 524305, 6, 0, 589834, 7, 0, 589835, 8, 0, 589836, 8, 0, 589837, 8, 0, 589838, 8, 0, 589839, 8, 0, 589840, 8, 0, 589841, 9, 0 )
 
 [node name="CorruptedDirt" parent="." instance=ExtResource( 7 )]
 show_behind_parent = true
 z_index = -998
-tile_data = PoolIntArray( 458763, 4, 0, 458764, 5, 0, 458765, 5, 0, 458766, 5, 0, 458767, 5, 0, 458768, 6, 0, 524299, 4, 0, 524300, 5, 0, 524301, 5, 0, 524302, 5, 0, 524303, 5, 0, 524304, 6, 0 )
+tile_data = PoolIntArray( 196611, 10, 0, 196612, 8, 0, 196613, 8, 0, 196614, 8, 0, 196615, 8, 0, 196616, 11, 0, 262147, 12, 0, 262148, 2, 0, 262149, 2, 0, 262150, 2, 0, 262151, 2, 0, 262152, 13, 0, 458763, 10, 0, 458764, 8, 0, 458765, 8, 0, 458766, 8, 0, 458767, 8, 0, 458768, 11, 0, 524299, 12, 0, 524300, 2, 0, 524301, 2, 0, 524302, 2, 0, 524303, 2, 0, 524304, 13, 0 )
 
 [node name="EnemyPath" parent="." instance=ExtResource( 2 )]
 curve = SubResource( 1 )
-
-[node name="PlacementArea" type="Area2D" parent="."]
-pause_mode = 2
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlacementArea"]
-polygon = PoolVector2Array( 344, 208, 360, 208, 360, 280, 344, 280 )
 
 [node name="PlacementArea4" type="Area2D" parent="."]
 pause_mode = 2
@@ -51,7 +43,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlacementArea4"]
-polygon = PoolVector2Array( 88, 88, 296, 88, 296, 168, 88, 168 )
+polygon = PoolVector2Array( 112, 112, 272, 112, 272, 144, 112, 144 )
 
 [node name="PlacementArea2" type="Area2D" parent="."]
 pause_mode = 2
@@ -59,7 +51,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlacementArea2"]
-polygon = PoolVector2Array( 536, 232, 552, 232, 552, 304, 536, 304 )
+polygon = PoolVector2Array( 368, 240, 528, 240, 528, 272, 368, 272 )
 
 [node name="PlacementArea3" type="Area2D" parent="."]
 pause_mode = 2
