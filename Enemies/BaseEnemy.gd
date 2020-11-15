@@ -11,6 +11,8 @@ export var damage: float = 10.0
 onready var health: int = max_health setget set_health
 onready var healthBar: ColorRect = $Control/HealthBar
 onready var maxHealthBar: ColorRect = $Control/MaxHealthBar
+onready var towerDetectionArea = $TowerDetectionArea
+onready var hurtbox = $Hurtbox
 
 var dying := false
 
@@ -42,3 +44,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	emit_signal("enemy_attacked_core", damage)
 	emit_signal("enemy_death")
 	call_deferred("queue_free")
+
+func _on_begin_death():
+	towerDetectionArea.monitorable = false
+	hurtbox.monitorable = false
