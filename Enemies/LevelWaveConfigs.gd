@@ -1,8 +1,12 @@
 extends Node
 
+
 enum LevelConfig {
-	TestLevel
+	TestLevel,
+	Level2,
+	Level3
 }
+
 
 enum {
 	Basic,
