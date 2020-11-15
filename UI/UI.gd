@@ -77,7 +77,7 @@ func start_wave():
 	startWave.visible = false
 
 func end_wave(current_wave: int, total_waves: int) -> void:
-	waveNumber.text = "Wave: " + str(current_wave) + "/" + str(total_waves)
+	waveNumber.text = "Wave: " + str(current_wave+1) + "/" + str(total_waves)
 	
 	if selected_card != null:
 		player_controller.cancel_card_play()

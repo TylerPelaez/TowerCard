@@ -23,7 +23,6 @@ func _ready():
 	enemySpawnController.connect("wave_finished_enemy_death", self, "_on_EnemySpawnController_wave_finished_enemy_death")
 	enemySpawnController.connect("spawner_enemy_attacked_core", self, "_on_EnemySpawnController_damage_core")
 	
-	Utils.level = 3
 	VisualServer.set_default_clear_color(Color("#222222"))
 	
 	var placementAreas = []
@@ -52,8 +51,8 @@ func _process(delta: float) -> void:
 		print("WAVE COMPLETE")
 		if current_wave == total_waves:
 			# LOAD NEXT LEVEL HERE
-			Utils.level = 1
-			get_tree().change_scene("res://World/Win.tscn")	
+			Utils.level = Utils.level + 1
+			get_tree().change_scene(Utils.get_scene(Utils.level))	
 	
 	if !wave_active && current_wave < total_waves && Input.is_action_just_pressed("start_wave"):
 		_start_wave()

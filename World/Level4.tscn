@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://World/Win.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/ThiccEnemy.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/ThiccEnemy.png" type="Texture" id=1]
+[ext_resource path="res://World/Level4.gd" type="Script" id=2]
 [ext_resource path="res://UI/FontTheme.tres" type="Theme" id=3]
 
 [node name="Win" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 265.514
@@ -44,7 +44,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 318.707, 86.2175 )
 scale = Vector2( 3.75004, 3.4899 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 hframes = 5
 frame = 4
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
