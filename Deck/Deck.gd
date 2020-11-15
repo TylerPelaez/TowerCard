@@ -6,12 +6,13 @@ var trashPile = []
 var hand = []
 
 const STARTING_DECK = {
-	CardsDatabase.LightningCard: 2,
+	CardsDatabase.LightningCard: 3,
 	CardsDatabase.Bunker: 4,
-	CardsDatabase.Missile: 3
+	CardsDatabase.Missile: 6
 }
 
 func _ready():
+	randomize()
 	for key in STARTING_DECK.keys():
 		for i in range(STARTING_DECK[key]):
 			drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[key]))
@@ -42,8 +43,8 @@ func shuffleDeck():
 	
 # Shuffles the discard pile back into the deck
 func returnDiscards():
-	for card in discardPile:
-		drawPile.push_front(card)
+	while !discardPile.empty():
+		drawPile.push_front(discardPile.pop_back())
 	shuffleDeck()
 	
 # Plays the specified card from the hand

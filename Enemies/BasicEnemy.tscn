@@ -81,7 +81,4 @@ visible = false
 [node name="Collider" parent="Hurtbox" index="0"]
 shape = ExtResource( 3 )
 
-[node name="MaxHealthBar" parent="Control" index="0"]
-grow_horizontal = 2
-
 [editable path="Hurtbox"]
