@@ -59,7 +59,13 @@ const DATA = {
 			{Tank:6},
 			{Fast: 5},
 		]
+	],
+	LevelConfig.Level2: [
+		[
+			{ Fast: 10 }
+		]
 	]
+		
 }
 
 var CONFIGS_TO_SCENES = { 

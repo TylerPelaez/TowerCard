@@ -8,19 +8,19 @@
 script = ExtResource( 1 )
 
 [node name="TowerCard" type="Label" parent="."]
-margin_left = 231.895
+margin_left = 249.733
 margin_top = 165.894
-margin_right = 315.895
-margin_bottom = 182.894
+margin_right = 315.733
+margin_bottom = 179.894
 rect_scale = Vector2( 2, 2 )
 theme = ExtResource( 3 )
-text = "Final Sector"
+text = "TowerCard"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 315.14, 130.516 )
+position = Vector2( 310.383, 129.921 )
 scale = Vector2( 2.33786, 2.17063 )
 texture = ExtResource( 2 )
 hframes = 13

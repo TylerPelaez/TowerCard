@@ -4,7 +4,6 @@ class_name Level
 
 onready var enemyPath = $EnemyPath
 onready var playerController = $PlayerController
-onready var placementArea = $PlacementArea
 onready var enemySpawnController = $EnemySpawnController
 onready var ui = $CanvasLayer/UI
 
@@ -26,7 +25,13 @@ func _ready():
 	
 	Utils.level = 1
 	VisualServer.set_default_clear_color(Color("#222222"))
-	playerController.set_level_placement_area(placementArea)
+	
+	var placementAreas = []
+	for child in get_children():
+		if child is Area2D:
+			placementAreas.append(child)
+	
+	playerController.set_level_placement_areas(placementAreas)
 	playerController.connect("heal_core", self, "on_core_healed")
 	enemySpawnController.initialize(self, enemyPath,level_config)
 	total_waves = enemySpawnController.get_wave_count()

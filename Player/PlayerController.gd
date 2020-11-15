@@ -29,7 +29,7 @@ var tower_that_was_being_upgraded
 var particleEffect 
 
 
-var level_placement_area
+var level_placement_areas
 
 func _process(delta):
 	# Force a draw call
@@ -98,8 +98,8 @@ func _unhandled_input(event):
 			held_tower.rotate_tower()
 			
 
-func set_level_placement_area(area: Node) -> void:
-	level_placement_area = area
+func set_level_placement_areas(areas: Array) -> void:
+	level_placement_areas = areas
 
 func _start_placing_tower(tower: PackedScene) -> void:
 	ui_state = STATE.PLACING_TOWER
@@ -146,10 +146,16 @@ func _cast_spell() -> void:
 	play_card()
 
 func can_place_held_tower() -> bool:
-	if held_tower == null || level_placement_area == null:
+	if held_tower == null || level_placement_areas == null:
 		return false
 	
-	return held_tower.overlaps_area(level_placement_area) && held_tower.get_overlapping_areas().size() == 1
+	var in_area
+	for area in level_placement_areas:
+		if held_tower.overlaps_area(area):
+			in_area = true
+			break
+	
+	return in_area && held_tower.get_overlapping_areas().size() == 1
 
 func get_upgradable_tower():
 	if held_tower == null:
