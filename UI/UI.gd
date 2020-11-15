@@ -5,6 +5,9 @@ onready var hand = $Hand
 onready var tooltip = $Tooltip
 onready var cardsInDeck = $CardsInDeck
 onready var cardsInDiscard = $CardsInDiscard
+onready var startWave = $StartWave
+onready var waveNumber = $WaveNumber
+onready var cardRewardScreen = $CardRewardScreen
 
 var player_controller
 var selected_card
@@ -62,10 +65,17 @@ func _on_CardDeselected() -> void:
 	handButton.mouse_filter = MOUSE_FILTER_PASS
 	_on_HideTooltip()
 
-func end_wave() -> void:
+func start_wave():
+	startWave.visible = false
+
+func end_wave(current_wave: int, total_waves: int) -> void:
+	waveNumber.text = "Wave: " + str(current_wave) + "/" + str(total_waves)
+	
 	if selected_card != null:
 		player_controller.cancel_card_play()
-	hand.draw_new_hand()
+	hide_hand_ui()
+	cardRewardScreen.show()
+	
 
 func _on_StartWave_pressed():
 	emit_signal("start_wave")
@@ -81,3 +91,12 @@ func show_hand_ui():
 	cardsInDiscard.visible = true
 	hand.visible = true
 	hand.mouse_filter = Control.MOUSE_FILTER_PASS
+
+
+func _on_CardRewardScreen_card_clicked(ui_card: UICard):
+	Deck.discardCard(ui_card.card_data)
+	
+	startWave.visible = true
+	cardRewardScreen.hide()
+	hand.draw_new_hand()
+	show_hand_ui()

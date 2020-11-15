@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Deck/Hand.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/CardsInDeck.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/Tooltip.gd" type="Script" id=4]
 [ext_resource path="res://UI/UI.gd" type="Script" id=5]
 [ext_resource path="res://chary___.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://UI/CardRewardScreen.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
@@ -79,6 +80,9 @@ margin_top = 154.5
 margin_right = 351.0
 margin_bottom = 174.5
 text = "Start Wave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="WaveNumber" type="Label" parent="."]
 margin_left = 544.0
@@ -99,7 +103,12 @@ text = "Core HP:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HandButton" to="Hand" method="_on_HandButton_pressed"]
-[connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
+
+[node name="CardRewardScreen" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="HandButton" to="CardsInDeck" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="HandButton" to="Hand" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="StartWave" to="." method="_on_StartWave_pressed"]
+[connection signal="card_clicked" from="CardRewardScreen" to="." method="_on_CardRewardScreen_card_clicked"]
+[connection signal="hide_tooltip" from="CardRewardScreen" to="." method="_on_HideTooltip"]
+[connection signal="show_tooltip" from="CardRewardScreen" to="." method="_on_ShowTooltip"]

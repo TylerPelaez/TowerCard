@@ -31,7 +31,6 @@ func _ready():
 	total_waves = enemySpawnController.get_wave_count()
 	ui.set_player_controller(playerController)
 	
-	$UI/StartWave.visible = true
 	ui.connect("start_wave", self, "_start_wave")
 	
 	$UI/WaveNumber.text = "Wave: " + str(current_wave) + "/" + str(total_waves)
@@ -40,12 +39,10 @@ func _process(delta: float) -> void:
 	$UI/CoreHP.text = "Core HP: " + str(core_health)
 	
 	if all_enemies_killed && enemies_done_spawning:
-		ui.end_wave()
+		ui.end_wave(current_wave, total_waves)
 		wave_active = false
 		all_enemies_killed = false
 		enemies_done_spawning = false
-		$UI/StartWave.visible = true
-		$UI/WaveNumber.text = "Wave: " + str(current_wave) + "/" + str(total_waves)
 		print("WAVE COMPLETE")
 		if current_wave == total_waves:
 			# LOAD NEXT LEVEL HERE
@@ -58,7 +55,7 @@ func _process(delta: float) -> void:
 		_start_wave()
 
 func _start_wave() -> void:
-	$UI/StartWave.visible = false
+	ui.start_wave()
 	current_wave += 1
 	enemySpawnController.start_wave(current_wave)
 	wave_active = true
