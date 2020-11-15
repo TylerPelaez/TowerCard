@@ -1,4 +1,5 @@
 extends BaseTower
+class_name LightningTower
 
 const lightning_texture := preload("res://Towers/Lightning.png")
 const LightningScene: PackedScene = preload("res://Other/Lightning.tscn")
@@ -53,3 +54,9 @@ func _on_StopLightingTimer_timeout():
 	lightningLine.clear_points()
 	is_firing_lightning = false
 	animationPlayer.play("Idle")
+
+func get_class_name():
+	return "LightningTower"
+
+func upgrade() -> void:
+	chain_limit += 1

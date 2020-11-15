@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Towers/BaseTower.gd"
 }, {
+"base": "BaseTower",
+"class": "BasicTower",
+"language": "GDScript",
+"path": "res://Towers/BasicTower.gd"
+}, {
 "base": "Node",
 "class": "Card",
 "language": "GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "Lightning",
 "language": "GDScript",
 "path": "res://Other/Lightning.gd"
+}, {
+"base": "BaseTower",
+"class": "LightningTower",
+"language": "GDScript",
+"path": "res://Towers/LightningTower.gd"
 }, {
 "base": "Node2D",
 "class": "PlayerController",
@@ -93,11 +103,13 @@ _global_script_class_icons={
 "BaseEnemy": "",
 "BaseProjectile": "",
 "BaseTower": "",
+"BasicTower": "",
 "Card": "",
 "EnemyPath": "",
 "Hand": "",
 "Level": "",
 "Lightning": "",
+"LightningTower": "",
 "PlayerController": "",
 "RepulsorTower": "",
 "SlowFieldPivot": "",

@@ -7,7 +7,6 @@ onready var slowFieldPivot = $SlowFieldPivot
 onready var slowField = $SlowFieldPivot/SlowField
 
 
-
 func _ready() -> void:
 	sprite.modulate = GREEN_TRANSPARENT_COLOR
 	draw_range = true
@@ -34,6 +33,18 @@ func _physics_process(delta: float) -> void:
 func _draw() -> void:
 	pass
 
+func _fire(target: BaseEnemy) -> void:
+	return
+
 func build_tower() -> void:
 	.build_tower()
 	slowField.monitorable = true
+
+func get_class_name():
+	return "RepulsorTower"
+
+func upgrade() -> void:
+	slow_amount += .1
+	slowFieldPivot.slow_amount += .1
+	slowFieldPivot.particles.amount += 5
+	slowFieldPivot.process_material.initial_velocity += 1.0

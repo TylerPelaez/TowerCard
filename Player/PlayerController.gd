@@ -16,10 +16,15 @@ var ui_state = STATE.DEFAULT
 var held_tower
 var selected_card
 var selected_spell
+var tower_that_was_being_upgraded
 
 var level_placement_area
 
 func _physics_process(delta: float) -> void:
+	if tower_that_was_being_upgraded != null:
+		tower_that_was_being_upgraded.set_regular_color()
+		tower_that_was_being_upgraded = null
+	
 	if ui_state == STATE.PLACING_TOWER:
 		if held_tower == null:
 			print("ERROR: state is PLACING_TOWER, but held_tower is null")
@@ -28,8 +33,17 @@ func _physics_process(delta: float) -> void:
 		held_tower.global_position = held_tower.get_global_mouse_position()
 			
 		if !can_place_held_tower():
-			held_tower.set_cant_place_color()
+			var upgradable_tower = get_upgradable_tower()
+			
+			if upgradable_tower != null:
+				held_tower.visible = false
+				upgradable_tower.set_can_upgrade_color()
+				tower_that_was_being_upgraded = upgradable_tower
+			else:
+				held_tower.visible = true
+				held_tower.set_cant_place_color()
 		else:
+			held_tower.visible = true
 			held_tower.set_can_place_color()
 
 func _unhandled_input(event):
@@ -43,8 +57,13 @@ func _unhandled_input(event):
 				return
 			if ui_state == STATE.CASTING and selected_spell != null:
 				_cast_spell()
-			elif ui_state == STATE.PLACING_TOWER and held_tower != null and can_place_held_tower():
-				_place_tower()
+			elif ui_state == STATE.PLACING_TOWER and held_tower != null:
+				if !can_place_held_tower():
+					var upgradable_tower = get_upgradable_tower()
+					if upgradable_tower != null:
+						_spend_tower_on_upgrade(upgradable_tower)
+				else:
+					_place_tower()
 		elif event.is_pressed() and event.is_action("cancel_tower_placement"):
 			if selected_card == null:
 				print("ERROR: selected card is null")
@@ -71,6 +90,13 @@ func _place_tower() -> void:
 	ui_state = STATE.DEFAULT
 	play_card()
 
+func _spend_tower_on_upgrade(towerToUpgrade: BaseTower) -> void:
+	held_tower.queue_free()
+	held_tower = null
+	towerToUpgrade.upgrade()
+	ui_state = STATE.DEFAULT
+	play_card()
+
 func _start_casting_spell(spell: SpellCard) -> void:
 	ui_state = STATE.CASTING
 	selected_spell = spell.spell
@@ -86,6 +112,18 @@ func can_place_held_tower() -> bool:
 		return false
 	
 	return held_tower.overlaps_area(level_placement_area) && held_tower.get_overlapping_areas().size() == 1
+
+func get_upgradable_tower():
+	if held_tower == null:
+		return null
+	
+	var overlapping = held_tower.get_overlapping_areas()
+	
+	for area in overlapping:
+		if area is BaseTower and area.get_class_name() == held_tower.get_class_name():
+			return area
+	
+	return null
 
 func cancel_card_play() -> void:
 	if held_tower != null:

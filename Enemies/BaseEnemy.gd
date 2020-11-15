@@ -83,4 +83,3 @@ func _on_Hurtbox_area_entered(area):
 func _on_Hurtbox_area_exited(area):
 	if area.get_parent() is SlowFieldPivot:
 		speed_multipliers.erase(area.get_parent())
-	

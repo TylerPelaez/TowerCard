@@ -5,11 +5,11 @@
 [ext_resource path="res://Towers/BasicTower.gd" type="Script" id=3]
 [ext_resource path="res://Towers/BasicProjectile.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 6.99999
 height = 6.00001
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "Fire1"
 length = 0.4
 tracks/0/type = "value"
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "Fire2"
 length = 0.4
 tracks/0/type = "value"
@@ -41,7 +41,7 @@ tracks/0/keys = {
 "values": [ 6, 6, 7, 8 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 resource_name = "Fire3"
 length = 0.3
 tracks/0/type = "value"
@@ -57,7 +57,7 @@ tracks/0/keys = {
 "values": [ 10, 11, 12 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "Idle"
 length = 0.1
 loop = true
@@ -79,6 +79,7 @@ script = ExtResource( 3 )
 Projectile = ExtResource( 4 )
 attack_range = 75.0
 projectile_speed = 150.0
+max_damage = 10
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
@@ -88,10 +89,10 @@ frame = 12
 
 [node name="PlacementCollider" parent="." index="3"]
 rotation = 1.5708
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/Fire1 = SubResource( 7 )
-anims/Fire2 = SubResource( 8 )
-anims/Fire3 = SubResource( 9 )
-anims/Idle = SubResource( 6 )
+anims/Fire1 = SubResource( 2 )
+anims/Fire2 = SubResource( 3 )
+anims/Fire3 = SubResource( 4 )
+anims/Idle = SubResource( 5 )

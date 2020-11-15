@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Towers/Repulsortower.png" type="Texture" id=1]
 [ext_resource path="res://Towers/BaseTower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Towers/RepulsorTower.gd" type="Script" id=3]
 [ext_resource path="res://Towers/SlowFieldPivot.gd" type="Script" id=4]
+[ext_resource path="res://Particles/purpleParticle.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 13 )
@@ -11,22 +12,35 @@ extents = Vector2( 12, 13 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 16 )
 
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 8, 1 )
+flag_disable_z = true
+spread = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 7.5
+initial_velocity_random = 0.2
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
 [node name="RepulsorTower" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
 attack_range = 0.0
-slow_amount = 0.5
+slow_amount = 0.25
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 1 )
 hframes = 4
 
 [node name="PlacementCollider" parent="." index="3"]
+visible = false
 shape = SubResource( 1 )
 
 [node name="SlowFieldPivot" type="Node2D" parent="." index="5"]
 script = ExtResource( 4 )
 
 [node name="SlowField" type="Area2D" parent="SlowFieldPivot" index="0"]
+visible = false
 monitorable = false
 collision_layer = 16
 collision_mask = 0
@@ -34,3 +48,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlowFieldPivot/SlowField" index="0"]
 position = Vector2( 63, -1 )
 shape = SubResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="SlowFieldPivot" index="1"]
+position = Vector2( 3, -6 )
+amount = 40
+lifetime = 15.0
+speed_scale = 5.0
+process_material = SubResource( 3 )
+texture = ExtResource( 5 )

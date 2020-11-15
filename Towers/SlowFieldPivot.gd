@@ -2,6 +2,7 @@ extends Node2D
 class_name SlowFieldPivot
 
 onready var slowField = $SlowField/CollisionShape2D
+onready var particles = $Particles2D
 var draw_range
 var spriteOffset
 var slow_amount
