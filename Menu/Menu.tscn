@@ -35,4 +35,16 @@ text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Directions" type="Button" parent="."]
+margin_left = 270.0
+margin_top = 232.0
+margin_right = 331.166
+margin_bottom = 220.976
+theme = ExtResource( 3 )
+text = "How To Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Directions" to="." method="_on_Directions_pressed"]

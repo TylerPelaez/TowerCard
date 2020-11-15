@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Menu/Tutorial.gd" type="Script" id=1]
+[ext_resource path="res://UI/FontTheme.tres" type="Theme" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -42.0
+margin_right = -40.0
+margin_bottom = -33.0
+theme = ExtResource( 2 )
+text = "BACK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 632.0
+margin_bottom = 305.0
+theme = ExtResource( 2 )
+text = "About:
+[GAME] is a deckbuilder / tower-defense hybrid.  
+
+Enemies will come to destroy your CORE in waves. Place TOWERS and Issue COMMANDS to stop them! 
+
+You discard your hand and draw 5 new cards at the end of every wave. Survive waves to add new cards to your deck!
+
+Placing TOWERS and Issuing COMMANDS Costs ENERGY. Your ENERGY Starts at 3 Every Wave.
+
+Controls:
+Left-Click on a card from your hand to select a card to play. Left-Click again to Place TOWER or issue COMMAND. Right-Click to Deselect.
+
+Placing a TOWER on a TOWER of the same type will upgrade the existing TOWER
+
+Some Towers Can be Rotated with 'R'."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/Menu" to="." method="_on_Menu_pressed"]

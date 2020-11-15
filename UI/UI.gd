@@ -57,7 +57,7 @@ func _on_CardPlayed() -> void:
 	hand.discard_card(selected_card, true)
 	
 	hand.update_playable_cards(player_controller.current_mana)
-	mana.text = "Mana: " + str(player_controller.current_mana)
+	mana.text = "Energy: " + str(player_controller.current_mana)
 	
 	_on_CardDeselected()
 
@@ -83,7 +83,7 @@ func end_wave(current_wave: int, total_waves: int) -> void:
 		player_controller.cancel_card_play()
 		
 	player_controller.reset_mana()
-	mana.text = "Mana: " + str(player_controller.current_mana)
+	mana.text = "Energy: " + str(player_controller.current_mana)
 	hide_hand_ui()
 	cardRewardScreen.show()
 	
