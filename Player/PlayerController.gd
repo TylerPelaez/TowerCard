@@ -3,6 +3,7 @@ class_name PlayerController
 
 signal card_played
 signal card_deselected
+signal heal_core(amount)
 
 enum STATE {
 	DEFAULT,
@@ -12,11 +13,15 @@ enum STATE {
 
 const BasicTowerResource: PackedScene = preload("res://Towers/BasicTower.tscn")
 
+export var max_mana: int = 3
+onready var current_mana = max_mana
+
 var ui_state = STATE.DEFAULT
 var held_tower
 var selected_card
 var selected_spell
 var tower_that_was_being_upgraded
+
 
 var level_placement_area
 
@@ -110,7 +115,10 @@ func _start_casting_spell(spell: SpellCard) -> void:
 	selected_spell = spell.spell
 
 func _cast_spell() -> void:
-	selected_spell.cast(get_global_mouse_position())
+	if selected_spell.spell_name == "Heal Core":
+		emit_signal("heal_core", selected_spell.damage)
+	else:
+		selected_spell.cast(get_global_mouse_position())
 	selected_spell = null
 	ui_state = STATE.DEFAULT
 	play_card()
@@ -142,6 +150,9 @@ func cancel_card_play() -> void:
 	selected_spell = null
 	emit_signal("card_deselected")
 
+func reset_mana():
+	current_mana = max_mana
+
 func select_card(card: Card) -> void:
 	if selected_card != null:
 		print("ERROR: Selected card is not null, but new card was selected")
@@ -154,5 +165,6 @@ func select_card(card: Card) -> void:
 		_start_casting_spell(card)
 
 func play_card() -> void:
+	current_mana -= selected_card.mana_cost
 	selected_card = null
 	emit_signal("card_played")

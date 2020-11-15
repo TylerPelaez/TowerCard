@@ -8,6 +8,7 @@ onready var cardsInDiscard = $CardsInDiscard
 onready var startWave = $StartWave
 onready var waveNumber = $WaveNumber
 onready var cardRewardScreen = $CardRewardScreen
+onready var mana = $Mana
 
 var player_controller
 var selected_card
@@ -25,6 +26,7 @@ func set_player_controller(playerController: PlayerController) -> void:
 	player_controller = playerController
 	player_controller.connect("card_played", self, "_on_CardPlayed")
 	player_controller.connect("card_deselected", self, "_on_CardDeselected")
+	mana.text = "Mana: " + str(playerController.current_mana)
 
 func _on_ShowTooltip(tooltip_text):
 	tooltip.text = tooltip_text
@@ -49,8 +51,12 @@ func _on_CardPlayed() -> void:
 	if selected_card == null:
 		print("ERROR - selected_card is null, but card was played")
 		return
+
+	hand.discard_card(selected_card, true)
 	
-	hand.discard_card(selected_card)
+	hand.update_playable_cards(player_controller.current_mana)
+	mana.text = "Mana: " + str(player_controller.current_mana)
+	
 	_on_CardDeselected()
 
 func _on_CardDeselected() -> void:
@@ -73,6 +79,8 @@ func end_wave(current_wave: int, total_waves: int) -> void:
 	
 	if selected_card != null:
 		player_controller.cancel_card_play()
+		
+	player_controller.reset_mana()
 	hide_hand_ui()
 	cardRewardScreen.show()
 	

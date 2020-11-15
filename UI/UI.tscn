@@ -43,9 +43,9 @@ __meta__ = {
 }
 
 [node name="CardsInDeck" type="Label" parent="."]
-margin_left = 63.5
+margin_left = 30.0
 margin_top = 296.0
-margin_right = 103.5
+margin_right = 68.0
 margin_bottom = 310.0
 text = "Deck:"
 script = ExtResource( 2 )
@@ -54,9 +54,9 @@ __meta__ = {
 }
 
 [node name="CardsInDiscard" type="Label" parent="."]
-margin_left = 63.5
+margin_left = 30.0
 margin_top = 316.0
-margin_right = 115.5
+margin_right = 90.0
 margin_bottom = 330.0
 text = "Discard:"
 script = ExtResource( 3 )
@@ -104,10 +104,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Mana" type="Label" parent="."]
+margin_left = 544.0
+margin_top = 29.0
+margin_right = 599.0
+margin_bottom = 30.668
+text = "Mana:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CardRewardScreen" parent="." instance=ExtResource( 7 )]
-[connection signal="pressed" from="HandButton" to="CardsInDeck" method="_on_HandButton_pressed"]
-[connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="HandButton" to="Hand" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="HandButton" to="CardsInDiscard" method="_on_HandButton_pressed"]
+[connection signal="pressed" from="HandButton" to="CardsInDeck" method="_on_HandButton_pressed"]
 [connection signal="pressed" from="StartWave" to="." method="_on_StartWave_pressed"]
 [connection signal="card_clicked" from="CardRewardScreen" to="." method="_on_CardRewardScreen_card_clicked"]
 [connection signal="hide_tooltip" from="CardRewardScreen" to="." method="_on_HideTooltip"]

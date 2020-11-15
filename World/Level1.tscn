@@ -32,6 +32,9 @@ polygon = PoolVector2Array( 0, 0, 32, 0, 32, 96, 64, 96, 64, 160, 512, 160, 512,
 
 [node name="EnemySpawnController" parent="." instance=ExtResource( 1 )]
 
-[node name="UI" parent="." instance=ExtResource( 5 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 5 )]
+mouse_filter = 2
 
 [editable path="EnemyPath"]

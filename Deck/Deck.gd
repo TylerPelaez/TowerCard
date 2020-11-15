@@ -6,11 +6,12 @@ var trashPile = []
 var hand = []
 
 const STARTING_DECK = {
-	CardsDatabase.LightningCard: 3,
-	CardsDatabase.Bunker: 4,
-	CardsDatabase.Missile: 3,
-	CardsDatabase.RepulsorTowerCard: 2,
-	CardsDatabase.EMPCard: 3
+	CardsDatabase.LightningCard: 0,
+	CardsDatabase.Bunker: 1,
+	CardsDatabase.Missile: 1,
+	CardsDatabase.RepulsorTowerCard: 0,
+	CardsDatabase.EMPCard: 0,
+	CardsDatabase.HealCore: 1
 }
 
 func _ready():
@@ -68,6 +69,9 @@ func returnDiscards():
 	while !discardPile.empty():
 		drawPile.push_front(discardPile.pop_back())
 	shuffleDeck()
+	
+func empty():
+	return discardPile.empty() and drawPile.empty()
 	
 # Plays the specified card from the hand
 func playCard(index):

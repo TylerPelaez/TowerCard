@@ -6,7 +6,7 @@ onready var enemyPath = $EnemyPath
 onready var playerController = $PlayerController
 onready var placementArea = $PlacementArea
 onready var enemySpawnController = $EnemySpawnController
-onready var ui = $UI
+onready var ui = $CanvasLayer/UI
 
 export (LevelWaveConfigs.LevelConfig) var level_config = LevelWaveConfigs.LevelConfig.TestLevel
 
@@ -27,16 +27,17 @@ func _ready():
 	Utils.level = 1
 	VisualServer.set_default_clear_color(Color("#222222"))
 	playerController.set_level_placement_area(placementArea)
+	playerController.connect("heal_core", self, "on_core_healed")
 	enemySpawnController.initialize(enemyPath, level_config)
 	total_waves = enemySpawnController.get_wave_count()
 	ui.set_player_controller(playerController)
 	
 	ui.connect("start_wave", self, "_start_wave")
 	
-	$UI/WaveNumber.text = "Wave: " + str(current_wave) + "/" + str(total_waves)
+	$CanvasLayer/UI/WaveNumber.text = "Wave: " + str(current_wave) + "/" + str(total_waves)
 
 func _process(delta: float) -> void:
-	$UI/CoreHP.text = "Core HP: " + str(core_health)
+	$CanvasLayer/UI/CoreHP.text = "Core HP: " + str(core_health)
 	
 	if all_enemies_killed && enemies_done_spawning:
 		ui.end_wave(current_wave, total_waves)
@@ -78,6 +79,8 @@ func set_core_health(value: float):
 	if core_health <= 0:
 		get_tree().change_scene("res://World/GameOver.tscn")
 
+func on_core_healed(heal_amount):
+	self.core_health += heal_amount
 
 func _on_EnemySpawnController_spawner_enemy_attacked_core(damage):
 	self.core_health -= damage
