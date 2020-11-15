@@ -18,7 +18,13 @@ func _ready():
 
 func initialize(enemySpawnTarget: Node, levelConfig: int) -> void:
 	enemy_spawn_target = enemySpawnTarget
-	spawn_configuration = LevelWaveConfigs.DATA[levelConfig]
+	print(LevelWaveConfigs.DATA[levelConfig])
+	spawn_configuration = []
+	for wave in LevelWaveConfigs.DATA[levelConfig]:
+		var new_wave = []
+		for enemyConfig in wave:
+			new_wave.append({enemyConfig.keys()[0]: enemyConfig.values()[0]})
+		spawn_configuration.append(new_wave)
 	
 func get_wave_count() -> int:
 	return spawn_configuration.size()

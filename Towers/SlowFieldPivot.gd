@@ -1,4 +1,5 @@
 extends Node2D
+class_name SlowFieldPivot
 
 onready var slowField = $SlowField/CollisionShape2D
 var draw_range

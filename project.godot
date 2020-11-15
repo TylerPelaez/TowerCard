@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Towers/RepulsorTower.gd"
 }, {
+"base": "Node2D",
+"class": "SlowFieldPivot",
+"language": "GDScript",
+"path": "res://Towers/SlowFieldPivot.gd"
+}, {
 "base": "Node",
 "class": "Spell",
 "language": "GDScript",
@@ -95,6 +100,7 @@ _global_script_class_icons={
 "Lightning": "",
 "PlayerController": "",
 "RepulsorTower": "",
+"SlowFieldPivot": "",
 "Spell": "",
 "SpellCard": "",
 "SpellProjectile": "",

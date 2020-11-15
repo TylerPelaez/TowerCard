@@ -76,9 +76,11 @@ func _on_begin_death():
 
 # Slow field entered
 func _on_Hurtbox_area_entered(area):
-	speed_multipliers.append(area.get_parent())
+	if area.get_parent() is SlowFieldPivot:
+		speed_multipliers.append(area.get_parent())
 
 #Slow field exited
 func _on_Hurtbox_area_exited(area):
-	speed_multipliers.erase(area.get_parent())
+	if area.get_parent() is SlowFieldPivot:
+		speed_multipliers.erase(area.get_parent())
 	
