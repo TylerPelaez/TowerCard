@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 		if target != null:
 			_fire(target)
 	
+	attackRangeCollider.position = Vector2.ZERO
 	# Force _draw() to be called
 	update()
 	
@@ -51,6 +52,7 @@ func set_damage(value: int) -> void:
 	damage = clamp(value, base_damage, max_damage)
 
 func set_range_collider_size() -> void:
+	print("size set")
 	if attackRangeCollider.shape is CircleShape2D:
 		attackRangeCollider.shape.radius = attack_range
 
