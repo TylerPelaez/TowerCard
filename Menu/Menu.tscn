@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Towers/Bunker.png" type="Texture" id=2]
+[ext_resource path="res://UI/FontTheme.tres" type="Theme" id=3]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,6 +13,7 @@ margin_top = 165.894
 margin_right = 315.733
 margin_bottom = 179.894
 rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 3 )
 text = "TowerCard"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -28,6 +30,7 @@ margin_left = 290.166
 margin_top = 200.976
 margin_right = 331.166
 margin_bottom = 220.976
+theme = ExtResource( 3 )
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
