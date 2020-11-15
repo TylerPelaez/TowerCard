@@ -100,5 +100,5 @@ texture_mode = 1
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="." index="8"]
 stream = ExtResource( 5 )
-volume_db = -25.0
+volume_db = -35.0
 [connection signal="timeout" from="StopLightingTimer" to="." method="_on_StopLightingTimer_timeout"]
