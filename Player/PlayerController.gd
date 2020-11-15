@@ -20,6 +20,14 @@ var tower_that_was_being_upgraded
 
 var level_placement_area
 
+func _process(delta):
+	# Force a draw call
+	update()
+
+func _draw():
+	if ui_state == STATE.CASTING and selected_spell != null:
+		draw_circle(get_local_mouse_position(), selected_spell.aoe, Color(0, 1, 0, 0.5))
+
 func _physics_process(delta: float) -> void:
 	if tower_that_was_being_upgraded != null:
 		tower_that_was_being_upgraded.set_regular_color()

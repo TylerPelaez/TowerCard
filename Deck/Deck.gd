@@ -8,9 +8,9 @@ var hand = []
 const STARTING_DECK = {
 	CardsDatabase.LightningCard: 3,
 	CardsDatabase.Bunker: 4,
-	CardsDatabase.Missile: 6,
+	CardsDatabase.Missile: 3,
 	CardsDatabase.RepulsorTowerCard: 2,
-	CardsDatabase.EMPCard: 100
+	CardsDatabase.EMPCard: 3
 }
 
 func _ready():
