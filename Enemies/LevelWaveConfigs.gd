@@ -62,7 +62,9 @@ const DATA = {
 	],
 	LevelConfig.Level2: [
 		[
-			{ Fast: 10 }
+			{ Fast: 1 },
+			{ Fast: 5 },
+			{ Basic: 10 }
 		]
 	]
 		
