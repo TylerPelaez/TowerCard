@@ -60,4 +60,5 @@ func _onEnemy_death():
 		emit_signal("wave_finished_enemy_death")
 
 func _onEnemy_attacked_core(damage: float):
+	print("EMIT DAMAGE CORE")
 	emit_signal("spawner_enemy_attacked_core", damage)

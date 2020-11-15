@@ -20,6 +20,26 @@ func _ready():
 	
 	shuffleDeck()
 	
+# Reset deck info after a game over
+func reset():
+	for card in drawPile:
+		card.free()
+	for card in discardPile:
+		card.free()
+	for card in trashPile:
+		card.free()
+	for card in hand:
+		card.free()
+	drawPile.clear()
+	discardPile.clear()
+	trashPile.clear()
+	hand.clear()
+	
+	randomize()
+	for key in STARTING_DECK.keys():
+		for i in range(STARTING_DECK[key]):
+			drawPile.push_back(CardsDatabase.create_card_from_data(CardsDatabase.DATA[key]))
+
 # Draw the top card of the deck
 # Puts it in the hand
 func drawCard():
