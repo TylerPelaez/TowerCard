@@ -1,7 +1,7 @@
 extends Node
 
 # Card format: [cardName, cardType, image, text, trashes]
-enum {Bunker, LightningCard, Missile, RepulsorTowerCard}
+enum {Bunker, LightningCard, Missile, RepulsorTowerCard, EMPCard}
 
 const DATA = {
 	Bunker:	
@@ -11,14 +11,18 @@ const DATA = {
 	LightningCard:
 		["Lightning", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/LightningTowerCard.png", "Lightning Tower", false, preload("res://Towers/LightningTower.tscn")],
 	RepulsorTowerCard:
-		["Repulsor", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/RepulsorTowerCard.png", "Repulsor Tower", false, preload("res://Towers/RepulsorTower.tscn")]
+		["Repulsor", Card.CARD_TYPE.TOWER, "res://Cards/Card Images/RepulsorTowerCard.png", "Repulsor Tower", false, preload("res://Towers/RepulsorTower.tscn")],
+	EMPCard:
+		["EMP", Card.CARD_TYPE.SPELL, "res://Cards/Card Images/EMPCard.png", "Electro-Magnetic Pulse", false, EMPCard]
 }
 
 # Too lazy to move this to another class.
-# spell format: [name, aoe radius, damage, single target]
+# spell format: [name, aoe radius, damage, single target, scene]
 const SPELL_DATA = {
 	Missile:
-		["Missile", 30, 10, false, preload("res://Spells/MissileProjectile.tscn")]
+		["Missile", 50, 5, false, preload("res://Spells/MissileProjectile.tscn")],
+	EMPCard:
+		["EMP", Card.CARD_TYPE.SPELL, 100, 0, false, preload("res://Spells/EMPSpell.tscn")]
 }
 
 func create_card_from_data(cardData: Array) -> Card:

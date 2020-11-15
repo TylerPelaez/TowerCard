@@ -45,6 +45,10 @@ func get_class_name():
 
 func upgrade() -> void:
 	slow_amount += .1
-	slowFieldPivot.slow_amount += .1
+	if slow_amount >= 0.95:
+		slow_amount = 0.95
+	
+	slowFieldPivot.slow_amount = slow_amount
 	slowFieldPivot.particles.amount += 5
 	slowFieldPivot.process_material.initial_velocity += 1.0
+	

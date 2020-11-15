@@ -53,6 +53,7 @@ shape = SubResource( 2 )
 position = Vector2( 3, -6 )
 amount = 40
 lifetime = 15.0
+preprocess = 10.0
 speed_scale = 5.0
 process_material = SubResource( 3 )
 texture = ExtResource( 5 )

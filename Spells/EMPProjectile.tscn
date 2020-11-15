@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Spells/SpellProjectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Spells/EMPProjectile.gd" type="Script" id=2]
+
+[node name="EMPProjectile" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+speed = 10.0
+
+[node name="EMPTimer" type="Timer" parent="." index="2"]
+wait_time = 3.0
+one_shot = true
+[connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_EnemyDetectionArea_area_entered"]
+[connection signal="timeout" from="EMPTimer" to="." method="_on_EMPTimer_timeout"]

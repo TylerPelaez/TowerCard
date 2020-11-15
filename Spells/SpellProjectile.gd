@@ -18,9 +18,10 @@ var initial_position = Vector2.ZERO
 var spell
 
 func _physics_process(delta):
-	global_position += velocity * delta	
-	if global_position.distance_squared_to(initial_position) >= target_position.distance_squared_to(initial_position):
-		trigger_effect()
+	if velocity != Vector2.ZERO:
+		global_position += velocity * delta	
+		if global_position.distance_squared_to(initial_position) >= target_position.distance_squared_to(initial_position):
+			trigger_effect()
 
 func initialize(newDirection: Vector2, target: Vector2, intitialPos: Vector2, newSpell: Spell) -> void:
 	velocity = newDirection.normalized() * speed
